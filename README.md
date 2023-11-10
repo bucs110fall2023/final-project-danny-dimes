@@ -6,7 +6,7 @@
 
 ## Team Members
 
-<< List team member names >>
+Michael Icarangal, Markus Massina
 
 ***
 
