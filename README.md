@@ -12,7 +12,7 @@ Michael Icarangal, Markus Massina
 
 ## Project Description
 
-<< Give an overview of your project >>
+<< We plan to build a stock simulator that simulates real life stock trading in the market >>
 
 ***    
 
@@ -30,11 +30,11 @@ Michael Icarangal, Markus Massina
 
 ### Features
 
-1. << Feature 1 >>
-2. << Feature 2 >>
-3. << Feature 3 >>
-4. << Feature 4 >>
-5. << Feature 5 >>
+1. << Buy Button >>
+2. << Sell Button >>
+3. << Total Balance >>
+4. << Profit/Loss >>
+5. << Descriptive Data for Each Stock >>
 
 ### Classes
 
