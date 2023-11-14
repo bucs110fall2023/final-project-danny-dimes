@@ -18,13 +18,16 @@ Michael Icarangal, Markus Massina
 
 ## GUI Design
 
+
+
+
 ### Initial Design
 
-![initial gui](assets/gui.jpg)
+![GUI Preview](image.png)
 
 ### Final Design
 
-![final gui](assets/finalgui.jpg)
+
 
 ## Program Design
 
