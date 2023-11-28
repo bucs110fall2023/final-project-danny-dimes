@@ -12,7 +12,8 @@ Michael Icarangal, Markus Massina
 
 ## Project Description
 
-<< We plan to build a duck hunting game where you can use a gun with limited ammo to hunt ducks and get points >>
+<< We plan to build a duck hunting game where you can use a gun with limited ammo to hunt ducks and get points. Our twist on this will be that 
+the ducks will be rival school mascots and the ammo will be baxters >>
 
 ***    
 
@@ -37,7 +38,7 @@ Michael Icarangal, Markus Massina
 2. << Total Shots >>
 3. << Ammo Left >>
 4. << Gun That Shoots >>
-5. << Different DUcks in Different Patterns >>
+5. << Different mascots moving in Different Patterns >>
 
 ### Classes
 
