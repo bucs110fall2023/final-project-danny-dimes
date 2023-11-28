@@ -12,7 +12,7 @@ Michael Icarangal, Markus Massina
 
 ## Project Description
 
-<< We plan to build a stock simulator that simulates real life stock trading in the market >>
+<< We plan to build a duck hunting game where you can use a gun with limited ammo to hunt ducks and get points >>
 
 ***    
 
@@ -33,11 +33,11 @@ Michael Icarangal, Markus Massina
 
 ### Features
 
-1. << Buy Button >>
-2. << Sell Button >>
-3. << Total Balance >>
-4. << Profit/Loss >>
-5. << Descriptive Data for Each Stock >>
+1. << Total Points >>
+2. << Total Shots >>
+3. << Ammo Left >>
+4. << Gun That Shoots >>
+5. << Different DUcks in Different Patterns >>
 
 ### Classes
 
