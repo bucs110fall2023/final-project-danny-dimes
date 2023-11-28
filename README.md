@@ -12,29 +12,32 @@ Michael Icarangal, Markus Massina
 
 ## Project Description
 
-<< We plan to build a duck hunting game with a gun that shoots the ducks and a score>>
+<< We plan to build a stock simulator that simulates real life stock trading in the market >>
 
 ***    
 
 ## GUI Design
 
+
+
+
 ### Initial Design
 
-![initial gui](assets/gui.jpg)
+![GUI Preview](image.png)
 
 ### Final Design
 
-![final gui](assets/finalgui.jpg)
+
 
 ## Program Design
 
 ### Features
 
-1. << Total points >>
-2. << Total Shots >>
-3. << Ammo Left >>
-4. << Gun that shoots >>
-5. << Diffrent Ducks in diffrent patterns >>
+1. << Buy Button >>
+2. << Sell Button >>
+3. << Total Balance >>
+4. << Profit/Loss >>
+5. << Descriptive Data for Each Stock >>
 
 ### Classes
 
