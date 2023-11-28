@@ -24,7 +24,7 @@ the ducks will be rival school mascots and the ammo will be baxters >>
 
 ### Initial Design
 
-![Alt text](image.png)
+![GUI Initial Design](image.png)
 
 ### Final Design
 
