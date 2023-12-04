@@ -1,5 +1,6 @@
-import pygame
+import pygame  
 #import your controller
+
 
 def main():
     pygame.init()
