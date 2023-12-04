@@ -54,7 +54,7 @@ the ducks will be rival school mascots and the ammo will be baxters >>
 - Expected Outcome: The user interface is intuitive, buttons respond to clicks, and the game starts without errors.
 
 2. Test Case: Duck Spawning
-- Test Description: Ensure ducks spawn correctly and follow the defined patterns.
+- Test Description: Ensure ducks spawn correctly and follow patterns.
 - Test Steps:
 2.1 Start a new game.
 2.2 Observe the spawning of ducks.
