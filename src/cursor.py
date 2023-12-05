@@ -1,6 +1,6 @@
 import pygame
 import random
-import livewires
+from livewires import games, color
 
 class Cursor(games.Sprite):
     """ Cursor Object """
