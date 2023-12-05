@@ -1,6 +1,7 @@
 import pygame
 from random import randint
 from game import Game
+from cursor import Cursor
 
 class Duck(pygame.sprite.Sprite):
     """ Duck Class """
