@@ -1,6 +1,5 @@
 import pygame  
-from game import Game
-from cursor import Cursor
+
 
 def main():
     pygame.init()
