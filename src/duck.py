@@ -1,5 +1,6 @@
 from livewires import games
 from random import randint
+from game import Game
 
 class Duck(games.Sprite):
     

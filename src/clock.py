@@ -1,4 +1,5 @@
 from livewires import games
+from game import Game
 
 class Clock(games.Sprite):
     """ Class for displaying the Clock """
