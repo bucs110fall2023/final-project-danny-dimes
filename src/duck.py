@@ -4,7 +4,12 @@ from game import Game
 from cursor import Cursor
 
 class Duck(pygame.sprite.Sprite):
-    """ Duck Class """
+    """
+    This represents a duck in the Duck Hunt game. 
+    It handles the duck's movement, animation, and response to being shot.
+    Args: None
+    Returns: None
+    """
     def __init__(self):
         super(Duck, self).__init__()
 

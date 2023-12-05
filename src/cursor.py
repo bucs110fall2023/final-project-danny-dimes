@@ -2,7 +2,13 @@ import pygame
 from game import Game
 
 class Cursor(pygame.sprite.Sprite):
-    """ Cursor Object """
+    """
+    This class represents the cursor used in the Duck Hunt game. It is responsible
+    for tracking the mouse position, detecting mouse clicks, and playing gunshot sounds.
+    The cursor sprite is updated to follow the mouse movements.
+    Args: None
+    Returns: None
+    """
     clicked = False
     
     xPos = pygame.mouse.get_pos()[0]

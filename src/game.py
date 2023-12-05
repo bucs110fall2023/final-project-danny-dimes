@@ -5,7 +5,13 @@ from clock import Clock
 from cursor import Cursor
 
 class Game(pygame.sprite.Sprite):
-    """ Duck Spawner Class """
+    """
+    This class represents the in-game clock used to track the remaining time
+    for the Duck Hunt game. It provides methods to start the clock, update the
+    countdown, and manage the visual representation of the timer.
+    Args: None
+    Returns: None
+    """
     image = pygame.image.load("Sprites\spawner.png")
 
     # Scoring

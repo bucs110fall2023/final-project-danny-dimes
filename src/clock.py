@@ -2,7 +2,13 @@ import pygame
 from game import Game
 
 class Clock(pygame.sprite.Sprite):
-    """ Class for displaying the Clock """
+    """
+    This represents the in-game clock used to track the remaining time
+    for the Duck Hunt game. It provides methods to start the clock, update the
+    countdown, and manage the visual representation of the timer.
+    Args: None
+    Returns: None
+    """
     def __init__(self):
         super(Clock, self).__init__()
 
