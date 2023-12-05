@@ -42,7 +42,13 @@ the ducks will be rival school mascots
 
 ### Classes
 
-- << You should have a list of each of your classes with a description >>
+mascot class: This represents a mascot in the Duck Hunt game. It handles the mascot's movement, animation, and response to being shot.
+
+clock class: This represents the in-game clock used to track the remaining time for the Duck Hunt game. It provides methods to start the clock, update the countdown, and manage the visual representation of the timer.
+
+cursor class: This class represents the cursor used in the Duck Hunt game. It is responsible for tracking the mouse position, detecting mouse clicks, and playing gunshot sounds. The cursor sprite is updated to follow the mouse movements.
+
+game class: This class represents the in-game clock used to track the remaining time for the Duck Hunt game. It provides methods to start the clock, update the countdown, and manage the visual representation of the timer.
 
 ## ATP
 1. Test Case: User Interface
@@ -82,7 +88,6 @@ the ducks will be rival school mascots
 - Test Steps:
 5.1 Start a new game
 5.2 Play game until timer runs out
-
 - Expected Outcome: The game ends when the timer runs out or the player reaches the target score, displaying text showing that game is over with 
 accuracy/ducks shot shown
 
