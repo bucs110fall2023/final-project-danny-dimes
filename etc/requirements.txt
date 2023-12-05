@@ -1,0 +1,3 @@
+pip3 install livewires
+pip install pygame
+pip install random
