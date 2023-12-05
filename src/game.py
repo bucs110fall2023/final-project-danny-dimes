@@ -48,7 +48,7 @@ class Game(pygame.sprite.Sprite):
 
         # Paused Game Sprite
         self.paused = pygame.sprite.Sprite()
-        self.paused.image = pygame.image.load("Sprites/paused.png")
+        self.paused.image = pygame.image.load("Sprites/paused.png")  #change
         self.paused.rect = self.paused.image.get_rect(center=(320, 240))
         self.paused.dx = 0
         self.paused.dy = 0
