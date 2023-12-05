@@ -5,42 +5,38 @@ from cursor import Cursor
 
 class Duck(pygame.sprite.Sprite):
     """ Duck Class """
-    def __init__(self, duckType):
+    def __init__(self):
         super(Duck, self).__init__()
-
-        # Colors Available
-        colors = ["", "black", "blue", "red"]
-        duckColor = colors[duckType]
 
         # Sprites for the Duck
         self.flyRight = [
-            pygame.image.load(f"Sprites/{duckColor}/duck1.png"),
-            pygame.image.load(f"Sprites/{duckColor}/duck2.png"),
-            pygame.image.load(f"Sprites/{duckColor}/duck3.png")
+            pygame.image.load(f"assets/njit"),
+            pygame.image.load(f"assets/ualbany"),
+            pygame.image.load(f"assets/ualbany"),
         ]
 
         self.flyStraightRight = [
-            pygame.image.load(f"Sprites/{duckColor}/duck4.png"),
-            pygame.image.load(f"Sprites/{duckColor}/duck5.png"),
-            pygame.image.load(f"Sprites/{duckColor}/duck6.png")
+            pygame.image.load(f"assets/njit"),
+            pygame.image.load(f"assets/ualbany"),
+            pygame.image.load(f"assets/ualbany"),
         ]
 
         self.flyLeft = [
-            pygame.image.load(f"Sprites/{duckColor}/duck7.png"),
-            pygame.image.load(f"Sprites/{duckColor}/duck8.png"),
-            pygame.image.load(f"Sprites/{duckColor}/duck9.png")
+            pygame.image.load(f"assets/njit"),
+            pygame.image.load(f"assets/ualbany"),
+            pygame.image.load(f"assets/ualbany"),
         ]
 
         self.flyStraightLeft = [
-            pygame.image.load(f"Sprites/{duckColor}/duck10.png"),
-            pygame.image.load(f"Sprites/{duckColor}/duck11.png"),
-            pygame.image.load(f"Sprites/{duckColor}/duck12.png")
+            pygame.image.load(f"assets/njit"),
+            pygame.image.load(f"assets/ualbany"),
+            pygame.image.load(f"assets/ualbany"),
         ]
 
         self.die = [
-            pygame.image.load(f"Sprites/{duckColor}/duckDie1.png"),
-            pygame.image.load(f"Sprites/{duckColor}/duckDie2.png"),
-            pygame.image.load(f"Sprites/{duckColor}/duckDie3.png")
+            pygame.image.load(f"assets/njit"),
+            pygame.image.load(f"assets/ualbany"),
+            pygame.image.load(f"assets/ualbany"),
         ]
 
         # Intialize Duck Sprite At Random X-Location
@@ -51,9 +47,7 @@ class Duck(pygame.sprite.Sprite):
         self.dx = 0
         self.dy = -1
 
-        # Point Values Based On Duck Color
-        pointValues = {"blue": 25, "red": 50, "black": 75}
-
+        
         # Direction Constants
         self.RIGHT = 1
         self.LEFT = 2
@@ -62,21 +56,13 @@ class Duck(pygame.sprite.Sprite):
         self.alive = True
         self.direction = randint(1, 2)
         self.straight = False  # True if duck is flying straight
-        self.points = pointValues[duckColor]
+        self.points = 10
 
         # Animation Frames
         self.frames = [
             self.flyRight[1], self.flyRight[2], self.flyRight[1],
             self.flyRight[0]
         ]
-
-        # Points above the duck's head when it's shot
-        self.deathScore = pygame.font.SysFont(None, 25).render(
-            str(self.points), True, (255, 255, 255)
-        )
-        self.deathScore_rect = self.deathScore.get_rect()
-        self.deathScore_rect.x = self.rect.x
-        self.deathScore_rect.y = self.rect.top - 5
 
         # Animation Variables
         self.dieDelay = 0  # Delay Duck Falling
