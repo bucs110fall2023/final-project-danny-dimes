@@ -211,10 +211,6 @@ class Duck(pygame.sprite.Sprite):
         self.dx = 0
         self.dy = 0
 
-        # Display score above duck's head
-        self.deathScore_rect.x = self.rect.x
-        self.deathScore_rect.y = self.rect.top - 10
-        games.screen.blit(self.deathScore, self.deathScore_rect)
 
     def update_animation(self):
         self.animationCount += 1
