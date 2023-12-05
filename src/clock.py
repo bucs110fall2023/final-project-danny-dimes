@@ -1,70 +1,65 @@
-from livewires import games
+import pygame
 from game import Game
 
-class Clock(games.Sprite):
+class Clock(pygame.sprite.Sprite):
     """ Class for displaying the Clock """
     def __init__(self):
-        super(Clock, self).__init__(image=Game.image, x=0, y=0)
+        super(Clock, self).__init__()
 
         # Timer Display
-        self.timer = games.Text(value="1:00", size=50, x=300, y=435, color=color.white)
-        games.screen.add(self.timer)
-        
-        self.clockCount = 0
+        self.image = Game.image  # Assuming Game.image is a surface
+        self.rect = self.image.get_rect(topleft=(0, 0))
+
+        self.font = pygame.font.Font(None, 50)
+        self.timer = self.font.render("1:00", True, (255, 255, 255))
+        self.timer_rect = self.timer.get_rect(topleft=(300, 435))
+
+        # Clock Properties
+        self.clock_count = 0
         self.seconds = 60
-        
+
         # Sound For Last 10 Seconds
-        self.sound = games.load_sound("Sounds/beep.wav")
+        self.sound = pygame.mixer.Sound("Sounds/beep.wav")
 
         self.started = False
 
     # Start the clock
     def start_clock(self):
         self.started = True
-    
+
     def update(self):
         # Check if clock has run out of time
         if self.seconds <= 0:
             self.started = False
             Game.over = True
+            pygame.mouse.set_visible(True)  # Show mouse
 
-            games.mouse.is_visible = True # Show mouse
-        
         # Change the clock's color to red when it gets down to the last minute
         if self.seconds <= 10:
-            self.timer.color = color.red
-
-        # Keep the clock in the same position
-        self.timer.left = 280
+            self.timer = self.font.render("0:" + str(self.seconds).rjust(2, "0"), True, (255, 0, 0))
 
     # Update the Clock's Label
     def update_clock(self):
-        label = "0:"
-        
-        if self.seconds < 10:
-            label += "0" + str(self.seconds)
-
-        else:
-            label += str(self.seconds)
+        label = "0:" + str(self.seconds).rjust(2, "0")
 
         # Play sound on final 10 seconds
         if self.seconds < 11:
             self.sound.play()
 
         # Update The Clock's Label
-        self.timer.value = label
+        self.timer = self.font.render(label, True, (255, 255, 255))
 
     # Perform the Clock countdown
     def tick(self):
         # Only Do Countdown if not paused and playing the game
         if self.started and not Game.paused:
-            if self.clockCount >= 100:
+            if self.clock_count >= 100:
                 self.seconds -= 1
 
                 # Show the new time on the clock
                 self.update_clock()
 
-                self.clockCount = 1
-                
+                self.clock_count = 1
+
             else:
-                self.clockCount += 1
+                self.clock_count += 1
