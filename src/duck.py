@@ -1,6 +1,5 @@
 import pygame
 from random import randint
-from game import Game
 from cursor import Cursor
 
 class Duck(pygame.sprite.Sprite):
@@ -104,7 +103,7 @@ class Duck(pygame.sprite.Sprite):
 
     def update(self):
         """ Update the sprite """
-        if not Game.paused and not Game.over:
+        if not Cursor.clicked:
             # Check if the duck is alive
             if self.alive:
                 # Duck is alive
@@ -190,7 +189,8 @@ class Duck(pygame.sprite.Sprite):
 
     def shot(self):
         """ Kill the duck """
-        Game.update_score(self.points)
+        # Pass the update_score function as a callback
+        self.callback(self.points)
 
         self.alive = False  # Set the duck to dead
         self.image = self.die[0]  # Replace with starting death animation
@@ -237,10 +237,10 @@ class Duck(pygame.sprite.Sprite):
             # Reset the animation counter
             self.animationCount = 0
 
-    def tick(self):
+    def tick(self, is_paused):
         """ Tick Method """
         # Tick only if game is not paused
-        if not Game.paused:
+        if not is_paused:
             if not self.alive:
                 # This will display the point value above the head and when it's done the duck will start to fall
                 if self.dieDelay > 50 and not self.continueDeath:
@@ -261,7 +261,7 @@ class Duck(pygame.sprite.Sprite):
                         self.dx = -0.5
             # Update the Duck's animation
             self.update_animation()
-        elif Game.paused:
+        elif is_paused:
             # Game is Paused - Freeze the duck
             self.dx = 0
             self.dy = 0
