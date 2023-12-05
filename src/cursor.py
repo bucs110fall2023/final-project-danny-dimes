@@ -1,5 +1,4 @@
 import pygame
-from game import Game
 
 class Cursor(pygame.sprite.Sprite):
     """
@@ -33,22 +32,21 @@ class Cursor(pygame.sprite.Sprite):
         # Keep the sprite at the same x and y location as the mouse
         self.rect.topleft = (Cursor.xPos, Cursor.yPos)
 
-    def tick(self):
+    def tick(self, is_paused, is_over, total_shots, elevate_foreground):
         """ Check For Mouse Click """
-        if not Game.paused and not Game.over:
+        if not is_paused and not is_over:
             # Check if the mouse was clicked
             if pygame.mouse.get_pressed()[0] and not Cursor.clicked:
                 # Play Gunshot Sound and add Total Sounds
                 Cursor.clicked = True
                 self.gunShotSound.play()
-                Game.totalShots += 1
+                total_shots += 1
             
             # Avoid repeated mouse clicks 
             if Cursor.clicked:
                 if self.mouseCounter > 10 and not pygame.mouse.get_pressed()[0]:
                     Cursor.clicked = False
                     self.mouseCounter = 0
-
                 else:
                     self.mouseCounter += 1
 
@@ -56,4 +54,4 @@ class Cursor(pygame.sprite.Sprite):
             Cursor.xPos, Cursor.yPos = pygame.mouse.get_pos()
 
             # Bring the tree and grass in front of all the ducks
-            self.foreground.elevate()
+            elevate_foreground()
