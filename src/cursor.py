@@ -25,8 +25,7 @@ class Cursor(pygame.sprite.Sprite):
         self.mouseClicked = False
         self.mouseCounter = 0
 
-        # Load gunshot sound
-        self.gunShotSound = pygame.mixer.Sound("Sounds/shot.wav")
+    
         
     def update(self):
         # Keep the sprite at the same x and y location as the mouse
@@ -37,9 +36,9 @@ class Cursor(pygame.sprite.Sprite):
         if not is_paused and not is_over:
             # Check if the mouse was clicked
             if pygame.mouse.get_pressed()[0] and not Cursor.clicked:
-                # Play Gunshot Sound and add Total Sounds
+                
                 Cursor.clicked = True
-                self.gunShotSound.play()
+              
                 total_shots += 1
             
             # Avoid repeated mouse clicks 
