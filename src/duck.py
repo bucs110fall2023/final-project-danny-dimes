@@ -62,11 +62,7 @@ class Duck(pygame.sprite.Sprite):
         self.straight = False  # True if duck is flying straight
         self.points = 10
 
-        # Animation Frames
-        self.frames = [
-            self.flyRight[1], self.flyRight[2], self.flyRight[1],
-            self.flyRight[0]
-        ]
+
 
         # Animation Variables
         self.dieDelay = 0  # Delay Duck Falling
@@ -134,43 +130,6 @@ class Duck(pygame.sprite.Sprite):
                     # Duck is flying upwards
                     self.dy = -1
 
-                # Update the animation frames based on duck's velocity
-                if not self.alive:
-                    self.frames = [self.die[1], self.die[2]]
-                elif self.direction == self.RIGHT:
-                    if self.straight:
-                        self.frames = [
-                            self.flyStraightRight[1],
-                            self.flyStraightRight[2],
-                            self.flyStraightRight[1],
-                            self.flyStraightRight[0],
-                        ]
-                    else:
-                        self.frames = [
-                            self.flyRight[1],
-                            self.flyRight[2],
-                            self.flyRight[1],
-                            self.flyRight[0],
-                        ]
-                elif self.direction == self.LEFT:
-                    if self.straight:
-                        self.frames = [
-                            self.flyStraightLeft[1],
-                            self.flyStraightLeft[2],
-                            self.flyStraightLeft[1],
-                            self.flyStraightLeft[0],
-                        ]
-                    else:
-                        self.frames = [
-                            self.flyLeft[1],
-                            self.flyLeft[2],
-                            self.flyLeft[1],
-                            self.flyLeft[0],
-                        ]
-
-                if self.frame >= len(self.frames):
-                    self.frame = 0
-
                 # Check for mouse clicks
                 if Cursor.clicked:
                     # Prevent the shooting of a duck that's behind the tree
@@ -193,7 +152,7 @@ class Duck(pygame.sprite.Sprite):
         self.callback(self.points)
 
         self.alive = False  # Set the duck to dead
-        self.image = self.die[0]  # Replace with starting death animation
+        self.image = self.die[0]  #Replaces image, might do large X over mascots eyes
 
         self.frame = 0
         self.animationCount = 0
@@ -203,39 +162,7 @@ class Duck(pygame.sprite.Sprite):
         self.dy = 0
 
 
-    def update_animation(self):
-        self.animationCount += 1
-
-        if self.animationCount >= 17:
-            # Change animation for falling dead duck
-            if not self.alive:
-                if self.continueDeath:
-                    self.dy = 2
-
-                    # Advance the Death Animation
-                    frames = [self.die[2], self.die[1]]
-
-                    self.image = frames[self.frame]
-
-                    self.frame += 1
-
-                    # Make Sure the frame stays within the correct range
-                    if self.frame >= len(frames):
-                        self.frame = 0
-            # Change animation for duck that's not dead
-            else:
-                if self.frame >= len(self.frames):
-                    self.frame = 0
-
-                self.image = self.frames[self.frame]
-
-                self.frame += 1
-
-                if self.frame >= len(self.frames):
-                    self.frame = 0
-
-            # Reset the animation counter
-            self.animationCount = 0
+    
 
     def tick(self, is_paused):
         """ Tick Method """
