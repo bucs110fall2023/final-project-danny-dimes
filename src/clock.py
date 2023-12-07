@@ -35,7 +35,7 @@ class Clock(pygame.sprite.Sprite):
         # Check if clock has run out of time
         if self.seconds <= 0:
             self.started = False
-            Game.over = True
+            #set loop to endloop here
             pygame.mouse.set_visible(True)  # Show mouse
 
         # Change the clock's color to red when it gets down to the last minute

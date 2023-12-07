@@ -27,7 +27,7 @@ class Controller:
 
      
 
-# Instructions Labels
+      # Instructions Labels
       self.instructions = pygame.font.Font(None, 35).render(
           "Shoot as many ducks as possible in 1 minute!", True, (255, 255, 255)
       )
