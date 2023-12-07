@@ -1,5 +1,6 @@
 import pygame 
 from src.duck import Duck
+from src.clock import Clock
 
 from src.background import Background
 
@@ -11,9 +12,6 @@ class Controller:
       self.screen = pygame.display.set_mode()
       self.width, self.height = pygame.display.get_window_size()
       self.BackGround = Background()
-
-
-
       self.fps = 60
       self.timer = pygame.time.Clock()
       self.mascots = pygame.sprite.Group()
@@ -21,8 +19,11 @@ class Controller:
       newDuck = Duck
       for _ in range (num_mascots):
         self.mascots.add(newDuck)
+      setClock = Clock
+      self.clock = setClock
 
       self.state="GAME"
+
 
      
 
@@ -44,20 +45,19 @@ class Controller:
       # self.paused.dx = 0
       # self.paused.dy = 0
       
-    #variables
-     # Scoring
-     
+ 
       
   def mainloop(self):
     while True:
       if self.state == "GAME":
         self.gameloop()
+        self.clock.start_clock
       elif self.state == "PAUSE":
         self.pauseloop()  
       elif self.state =="END":
         self.endloop()
 
-
+  #scoring
   score = 0
   ducks_hit = 0
   total_shots = 0  # Total Shots Taken
@@ -78,8 +78,7 @@ class Controller:
               #add to points
           total_shots+=1
       
-  
-
+      self.clock.update_clock
       self.mascots.update #update mascots
 
 

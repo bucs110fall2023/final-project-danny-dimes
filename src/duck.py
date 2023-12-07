@@ -1,6 +1,6 @@
 import pygame
 from random import randint
-from cursor import Cursor
+
 
 class Duck(pygame.sprite.Sprite):
     """
@@ -91,52 +91,39 @@ class Duck(pygame.sprite.Sprite):
 
     def update(self):
         """ Update the sprite """
-        if not Cursor.clicked:
-            # Check if the duck is alive
-            if self.alive:
-                # Duck is alive
-                if (
-                    self.rect.bottom < 0
-                    or self.rect.right < 0
-                    or self.rect.left > 640
-                ):
-                    # Duck is off the screen, destroy
-                    self.kill()
+        # Check if the duck is alive
+        if self.alive:
+            # Duck is alive
+            if (
+                self.rect.bottom < 0
+                or self.rect.right < 0
+                or self.rect.left > 640
+            ):
+                # Duck is off the screen, destroy
+                self.kill()
 
-                # Check if the duck should try and change directions
-                if self.directionCount < 100:
-                    self.directionCount += 1
-                else:
-                    self.change_direction()
-                    self.directionCount = 0
-
-                # Check if the duck is going straight and change velocity
-                if self.straight:
-                    self.dy = 0
-
-                    if self.direction == self.RIGHT:
-                        self.dx = 1
-                    else:
-                        self.dx = -1
-                else:
-                    # Duck is flying upwards
-                    self.dy = -1
-
-                # Check for mouse clicks
-                if Cursor.clicked:
-                    # Prevent the shooting of a duck that's behind the tree
-                    if not (150 < Cursor.xPos < 240) or not (220 < Cursor.yPos < 390):
-                        # Check if the mouse was over the duck
-                        if (
-                            self.rect.left <= Cursor.xPos <= self.rect.right
-                            and self.rect.top <= Cursor.yPos <= self.rect.bottom
-                        ):
-                            # Duck was shot - Kill it
-                            self.shot()
+            # Check if the duck should try and change directions
+            if self.directionCount < 100:
+                self.directionCount += 1
             else:
-                # Duck is Dead, Destroy once it hits the ground
-                if self.rect.bottom > 370:
-                    self.kill()
+                self.change_direction()
+                self.directionCount = 0
+
+            # Check if the duck is going straight and change velocity
+            if self.straight:
+                self.dy = 0
+
+                if self.direction == self.RIGHT:
+                    self.dx = 1
+                else:
+                    self.dx = -1
+            else:
+                # Duck is flying upwards
+                self.dy = -1
+        else:
+            # Duck is Dead, Destroy once it hits the ground
+            if self.rect.bottom > 370:
+                self.kill()
 
     def shot(self):
         """ Kill the sprite """

@@ -1,5 +1,4 @@
 import pygame
-from game import Game
 
 class Clock(pygame.sprite.Sprite):
     """
@@ -13,7 +12,7 @@ class Clock(pygame.sprite.Sprite):
         super(Clock, self).__init__()
 
         # Timer Display
-        self.image = Game.image  # Assuming Game.image is a surface
+        self.image = pygame.draw.rect()
         self.rect = self.image.get_rect(topleft=(0, 0))
 
         self.font = pygame.font.Font(None, 50)
@@ -52,16 +51,15 @@ class Clock(pygame.sprite.Sprite):
         self.timer = self.font.render(label, True, (255, 255, 255))
 
     # Perform the Clock countdown
-    def tick(self):
+    def countdown(self):
         # Only Do Countdown if not paused and playing the game
-        if self.started and not Game.paused:
-            if self.clock_count >= 100:
-                self.seconds -= 1
+        if self.clock_count >= 100:
+            self.seconds -= 1
 
-                # Show the new time on the clock
-                self.update_clock()
+            # Show the new time on the clock
+            self.update_clock()
 
-                self.clock_count = 1
+            self.clock_count = 1
 
-            else:
-                self.clock_count += 1
+        else:
+            self.clock_count += 1
