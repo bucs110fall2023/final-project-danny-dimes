@@ -1,5 +1,5 @@
 import pygame 
-#from duck import Duck
+from src.duck import Duck
 
 from src.background import Background
 
@@ -17,6 +17,10 @@ class Controller:
       self.fps = 60
       self.timer = pygame.time.Clock()
       self.mascots = pygame.sprite.Group()
+      num_mascots=3
+      newDuck = Duck
+      for _ in range (num_mascots):
+        self.mascots.add(newDuck)
 
       self.state="GAME"
 
@@ -57,6 +61,42 @@ class Controller:
       elif self.state =="END":
         self.endloop()
 
+
+
+
+  def gameloop(self): #actual game goes here
+    while True:
+      for event in pygame.event.get():
+        if event.type == pygame.QUIT:
+            pygame.quit()
+            exit()
+        elif event.type == pygame.MOUSEBUTTONDOWN:
+          for s in self.mascots:
+            if s.rect.collidepoint(event.pos):
+              s.kill
+          #add to points
+          #add to ducks hit
+          #add to total shots
+
+      
+  
+
+      self.mascots.update #update mascots
+
+
+
+
+
+        #elif event.type == pygame.KEYDOWN:
+          #if event.key == pygame.K_p:
+            #self.state = "PAUSE"  # Pause game
+              #return  # Exit the gameloop, as the game is paused
+            
+      # Update game objects
+      self.timer.tick(self.fps)
+   
+    
+#do cursor last
 
   #def pauseloop(self):
     # for event in pygame.event.get():
@@ -99,33 +139,3 @@ class Controller:
 
 #     pygame.quit()
 #     exit()
-
-  #def gameloop(self): #actual game goes here
-#     while True:
-#       for event in pygame.event.get():
-#         if event.type == pygame.QUIT:
-#             pygame.quit()
-#             exit()
-
-      
-#   #check to see if duck shot --> use if statement for next part
-
-#       self.mascots.update #update mascots
-
-
-
-
-
-#         #elif event.type == pygame.KEYDOWN:
-#           #if event.key == pygame.K_p:
-#             #self.state = "PAUSE"  # Pause game
-#               #return  # Exit the gameloop, as the game is paused
-            
-#       # Update game objects
-#       self.timer.tick(self.fps)
-   
-    
-# #do cursor last
-
-
-    

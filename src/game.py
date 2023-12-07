@@ -50,15 +50,7 @@ class Game(pygame.sprite.Sprite):
         self.game_timer.rect.y = 0
         self.add(self.game_timer)
 
-    def spawn(self):
-        """ Spawn a duck """
-        # Generate a random colored duck
-        new_duck = Duck(randint(1, 3))
-
-        Game.total_ducks += 1
-
-        self.add(new_duck)
-
+   
     def update(self):
 
     def tick(self):
