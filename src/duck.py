@@ -63,14 +63,6 @@ class Duck(pygame.sprite.Sprite):
         self.points = 10
 
 
-
-        # Animation Variables
-        self.dieDelay = 0  # Delay Duck Falling
-        self.continueDeath = False
-        self.animationCount = 0
-        self.frame = 0  # What frame of the animation?
-        self.directionCount = 0
-
         # Set velocity based on direction
         if self.direction == self.RIGHT:
             self.dx = 0.5
@@ -149,7 +141,7 @@ class Duck(pygame.sprite.Sprite):
     def shot(self):
         """ Kill the sprite """
         # Pass the update_score function as a callback
-        self.callback(self.points)
+        self.callback(self.points)  #adds points
 
         self.alive = False  # Set the duck to dead
         self.image = self.die[0]  #Replaces image, might do large X over mascots eyes
@@ -163,32 +155,3 @@ class Duck(pygame.sprite.Sprite):
 
 
     
-
-    def tick(self, is_paused):
-        """ Tick Method """
-        # Tick only if game is not paused
-        if not is_paused:
-            if not self.alive:
-                # This will display the point value above the head and when it's done the duck will start to fall
-                if self.dieDelay > 50 and not self.continueDeath:
-                    self.dy = 1
-
-                    self.continueDeath = True
-                    self.frame = 0
-
-                elif not self.continueDeath:
-                    self.dieDelay += 1
-            # This elif will help birds continue to fly
-            # At the correct angle and direction after resuming from a pause
-            elif (self.dx == 0) and (self.dy == -1):
-                if not self.straight:
-                    if self.direction == self.RIGHT:
-                        self.dx = 0.5
-                    else:
-                        self.dx = -0.5
-            # Update the Duck's animation
-            self.update_animation()
-        elif is_paused:
-            # Game is Paused - Freeze the duck
-            self.dx = 0
-            self.dy = 0

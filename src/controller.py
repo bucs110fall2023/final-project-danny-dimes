@@ -32,3 +32,4 @@ class Controller:
               # handle other game events
 
    
+    self.mascots = pygame.sprite.Group()
