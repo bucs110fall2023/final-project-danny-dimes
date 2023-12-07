@@ -39,7 +39,7 @@ class Controller:
               
         #elif event.type == pygame.KEYDOWN:
           #if event.key == pygame.K_p:
-            #controller.state = "PAUSE"  # Pause game
+            #self.state = "PAUSE"  # Pause game
               #return  # Exit the gameloop, as the game is paused
             
       # Update game objects
