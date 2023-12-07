@@ -47,9 +47,6 @@ class Clock(pygame.sprite.Sprite):
     def update_clock(self):
         label = "0:" + str(self.seconds).rjust(2, "0")
 
-        # Play sound on final 10 seconds
-        if self.seconds < 11:
-            self.sound.play()
 
         # Update The Clock's Label
         self.timer = self.font.render(label, True, (255, 255, 255))
