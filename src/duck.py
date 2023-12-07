@@ -43,7 +43,7 @@ class Duck(pygame.sprite.Sprite):
             pygame.image.load(f"assets/ualbany"),
         ]
 
-        # Intialize Duck Sprite At Random X-Location
+        # Intialize Sprite At Random X-Location
         self.image = self.flyRight[0]
         self.rect = self.image.get_rect()
         self.rect.x = randint(10, 470)
@@ -78,7 +78,7 @@ class Duck(pygame.sprite.Sprite):
             self.dx = -0.5
 
     def change_direction(self):
-        """ Decide to change duck's direction """
+        """ Decide to change sprite's direction """
         randomNum = randint(1, 340)
 
         if randomNum % 5 == 0:
@@ -147,7 +147,7 @@ class Duck(pygame.sprite.Sprite):
                     self.kill()
 
     def shot(self):
-        """ Kill the duck """
+        """ Kill the sprite """
         # Pass the update_score function as a callback
         self.callback(self.points)
 
