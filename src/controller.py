@@ -23,12 +23,6 @@ class Controller:
         self.game.run_game = False
       # handle other menu events
 
-    # update data for the menu
-    self.game.menu_manager.update()
-
-    # redraw the menu
-    self.game.menu_manager.draw()
-
   def gameloop(self):
     while True:
       for event in pygame.event.get():
