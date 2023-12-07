@@ -6,19 +6,18 @@ class Controller:
       pygame.init()
       self.fps = 60
       self.timer = pygame.time.Clock()
-      self.game = DuckHuntingGame()
-
+      
   def mainloop(self):
-    while self.game.run_game:
-      self.timer.tick(self.fps)
-      if self.game.state == "menu":
-        self.menuloop()
-      elif self.game.state == "game":
+    while True:
+      if self.state == "GAME":
         self.gameloop()
-      elif self.game.state == "game_over":
-        self.gameoverloop()
+      elif self.state == "PAUSE":
+        self.pauseloop()  
+      elif self.state =="END":
+        self.endloop()
 
-  def menuloop(self):
+
+  def pauseloop(self):
     for event in pygame.event.get():
       if event.type == pygame.QUIT:
         self.game.run_game = False
@@ -31,28 +30,11 @@ class Controller:
     self.game.menu_manager.draw()
 
   def gameloop(self):
-    for event in pygame.event.get():
-      if event.type == pygame.QUIT:
-          self.game.run_game = False
-            # handle other game events
+    while True:
+      for event in pygame.event.get():
+        if event.type == pygame.QUIT:
+            pygame.quit()
+            exit()
+              # handle other game events
 
-    # update game data
-    self.game.level_manager.update()
-    self.game.ui_manager.update()
-
-    # redraw the game
-    self.game.level_manager.draw()
-    self.game.ui_manager.draw()
-
-  def gameoverloop(self):
-    for event in pygame.event.get():
-      if event.type == pygame.QUIT:
-        self.game.run_game = False
-      # handle other game over events
-
-    # update data for the game over screen
-    self.game.menu_manager.update()
-
-    # redraw the game over screen
-    self.game.menu_manager.draw()
-
+   
