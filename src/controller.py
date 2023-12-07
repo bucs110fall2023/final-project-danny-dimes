@@ -46,11 +46,7 @@ class Controller:
       
     #variables
      # Scoring
-      score = 0
-      ducks_hit = 0
-      total_shots = 0  # Total Shots Taken
-      total_ducks = 0  # Total Ducks Spawned
-
+     
       
   def mainloop(self):
     while True:
@@ -62,6 +58,10 @@ class Controller:
         self.endloop()
 
 
+  score = 0
+  ducks_hit = 0
+  total_shots = 0  # Total Shots Taken
+  total_ducks = 0  # Total Ducks Spawned
 
 
   def gameloop(self): #actual game goes here
@@ -74,16 +74,16 @@ class Controller:
           for s in self.mascots:
             if s.rect.collidepoint(event.pos):
               s.kill
-          #add to points
-          #add to ducks hit
-          #add to total shots
-
+              ducks_hit+=1
+              #add to points
+          total_shots+=1
       
   
 
       self.mascots.update #update mascots
 
 
+      #if time = 0, end game
 
 
 
