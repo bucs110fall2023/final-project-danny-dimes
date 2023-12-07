@@ -52,7 +52,8 @@ class Game(pygame.sprite.Sprite):
 
    
     def update(self):
-
+        pass
+    
     def tick(self):
         if self.playing and not Game.paused and not Game.over:
             # Keep counting until the duck spawner should spawn a new duck
