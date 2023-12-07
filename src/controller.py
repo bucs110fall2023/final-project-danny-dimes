@@ -33,12 +33,12 @@ class Controller:
       )
       self.instructions2_rect = self.instructions2.get_rect(x=320, y=140)
 
-      # Paused Game Sprite
-      self.paused = pygame.sprite.Sprite()
-      self.paused.image = pygame.image.load("Sprites/paused.png")  #change
-      self.paused.rect = self.paused.image.get_rect(center=(320, 240))
-      self.paused.dx = 0
-      self.paused.dy = 0
+      # # Paused Game Sprite
+      # self.paused = pygame.sprite.Sprite()
+      # #self.paused.image = pygame.image.load("Sprites/paused.png")  #change
+      # self.paused.rect = self.paused.image.get_rect(center=(320, 240))
+      # self.paused.dx = 0
+      # self.paused.dy = 0
       
     #variables
      # Scoring
@@ -58,14 +58,14 @@ class Controller:
         self.endloop()
 
 
-  def pauseloop(self):
-    for event in pygame.event.get():
-      if event.type == pygame.QUIT:
-        self.state = "END"
-      elif event.type == pygame.KEYDOWN:
-        if event.key == pygame.K_p:
-          self.state = "GAME"  # Resume the game
-        # Handle other pause menu events
+  #def pauseloop(self):
+    # for event in pygame.event.get():
+    #   if event.type == pygame.QUIT:
+    #     self.state = "END"
+    #   elif event.type == pygame.KEYDOWN:
+    #     if event.key == pygame.K_p:
+    #       self.state = "GAME"  # Resume the game
+    #     # Handle other pause menu events
 
 
 
