@@ -24,8 +24,7 @@ class Clock(pygame.sprite.Sprite):
         self.clock_count = 0
         self.seconds = 60
 
-        # Sound For Last 10 Seconds
-        self.sound = pygame.mixer.Sound("Sounds/beep.wav")
+       
 
         self.started = False
 
