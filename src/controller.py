@@ -20,8 +20,15 @@ class Controller:
   def pauseloop(self):
     for event in pygame.event.get():
       if event.type == pygame.QUIT:
-        self.game.run_game = False
-      # handle other menu events
+        self.state = "END"
+      elif event.type == pygame.KEYDOWN:
+        if event.key == pygame.K_p:
+          self.state = "GAME"  # Resume the game
+        # Handle other pause menu events
+
+  def endloop(self):
+    pygame.quit()
+    exit()
 
   def gameloop(self):
     while True:
@@ -29,7 +36,13 @@ class Controller:
         if event.type == pygame.QUIT:
             pygame.quit()
             exit()
-              # handle other game events
-
+              
+        #elif event.type == pygame.KEYDOWN:
+          #if event.key == pygame.K_p:
+            #controller.state = "PAUSE"  # Pause game
+              #return  # Exit the gameloop, as the game is paused
+            
+      # Update game objects
+      self.timer.tick(self.fps)
    
     self.mascots = pygame.sprite.Group()
