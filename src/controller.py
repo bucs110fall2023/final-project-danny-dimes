@@ -84,11 +84,13 @@ class Controller:
         
       for s in self.mascots:
         s.update() #update mascots
-      # self.scoreboard.update(self,self.score)#point variable inside
+        self.scoreboard.update(self.score)#point variable inside
       
 
       #redraw models
       self.all_sprites.draw(self.screen)
+      #redraw scoreboard
+      self.screen.blit(self.scoreboard.image, self.scoreboard.rect)
       #redraw background
       # self.screen.fill((255, 255, 255))  # Fill the screen with white
       # self.screen.blit(self.background.image, self.background.rect)
