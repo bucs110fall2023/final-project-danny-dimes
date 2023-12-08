@@ -13,47 +13,27 @@ class Duck(pygame.sprite.Sprite):
         super(Duck, self).__init__()
 
         # Sprites for the Duck
-        self.flyRight = [
-            pygame.image.load(f"assets/njit.png"),
-            pygame.image.load(f"assets/ualbany.png"),
-            pygame.image.load(f"assets/ualbany.png"),
-        ]
-
-        self.flyStraightRight = [
-            pygame.image.load(f"assets/njit.png"),
-            pygame.image.load(f"assets/ualbany.png"),
-            pygame.image.load(f"assets/ualbany.png"),
-        ]
-
-        self.flyLeft = [
-            pygame.image.load(f"assets/njit.png"),
-            pygame.image.load(f"assets/ualbany.png"),
-            pygame.image.load(f"assets/ualbany.png"),
-        ]
-
-        self.flyStraightLeft = [
-            pygame.image.load(f"assets/njit.png"),
-            pygame.image.load(f"assets/ualbany.png"),
-            pygame.image.load(f"assets/ualbany.png"),
-        ]
-
-        self.die = [
-            pygame.image.load(f"assets/njit.png"),
-            pygame.image.load(f"assets/ualbany.png"),
-            pygame.image.load(f"assets/ualbany.png"),
-        ]
-
+        spriteChooser = randint(0,1)
+        
+        self.ualbany = pygame.image.load(f"assets/ualbany.png")
+        self.njit = pygame.image.load(f"assets/njit.png")
+        if spriteChooser == 0:
+            self.image = self.ualbany
+            self.image = pygame.transform.scale(self.image, (150,150))
+        if spriteChooser == 1:
+            self.image = self.njit
         # Intialize Sprite At Random X-Location
-        self.image = self.flyRight[0]
+        
         self.rect = self.image.get_rect()
         self.rect.x = randint(10, 1000)
         self.rect.y = 350
-        self.speed = 1
+        self.speed = 5
+        self.directionCount=0
 
 
         # Direction Constants
-        self.RIGHT = 0
-        self.LEFT = 1
+        self.RIGHT = 1
+        self.LEFT = 2
 
         # Duck Variables
         self.alive = True
@@ -99,7 +79,7 @@ class Duck(pygame.sprite.Sprite):
 
     def update(self):
         """ Update the sprite """
-        # Check if the duck is alive
+        #Check if the duck is alive
         if self.alive:
             # Duck is alive
             if (
@@ -126,10 +106,12 @@ class Duck(pygame.sprite.Sprite):
             else:
                 # Duck is flying upwards
                 self.move_up()
+                self.change_direction()
         else:
             # Duck is Dead, Destroy once it hits the ground
             if self.rect.bottom > 370:
                 self.kill()
+       
 
     def shot(self):
         """ Kill the sprite """

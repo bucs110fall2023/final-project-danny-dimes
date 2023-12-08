@@ -15,15 +15,19 @@ class Controller:
       self.fps = 60
       self.timer = pygame.time.Clock()
       self.mascots = pygame.sprite.Group()
-      num_mascots=3
+      self.num_mascots=3
       #possibly add interval for adding (i.e spawns every 5 seconds)
-      for _ in range (num_mascots):
-        self.mascots.add(Duck())
+      
     
       self.clock = Clock
       self.scoreboard = Scoreboard
       
+      self.all_sprites = pygame.sprite.Group()
       
+      self.all_sprites.add(self.background)
+      self.all_sprites.add(self.mascots)
+      for _ in range (self.num_mascots):
+        self.mascots.add(Duck())
 
       self.state="GAME"
 
@@ -66,6 +70,7 @@ class Controller:
 
   def gameloop(self): #actual game goes here
     while True:
+      
       for event in pygame.event.get():
         if event.type == pygame.QUIT:
             pygame.quit()
@@ -85,21 +90,22 @@ class Controller:
         self.state=="END"
       
         
-      self.mascots.update #update mascots
+      for s in self.mascots:
+        s.update() #update mascots
       # self.scoreboard.update(self,self.score)#point variable inside
       
 
       #redraw models
+      self.all_sprites.draw(self.screen)
       #redraw background
-      self.screen.fill((255, 255, 255))  # Fill the screen with white
-      self.screen.blit(self.background.image, self.background.rect)
+      # self.screen.fill((255, 255, 255))  # Fill the screen with white
+      # self.screen.blit(self.background.image, self.background.rect)
       self.mascots.draw(self.screen)  # Draw the mascots on the screen
       #self.screen.blit(self.instructions, self.instructions_rect)
       #self.screen.blit(self.instructions2, self.instructions2_rect)
       pygame.display.flip()
             
-      # Update game objects
-      self.timer.tick(self.fps)
+      
 
   def pauseloop(self):
     # Handle events specific to the "PAUSE" state
