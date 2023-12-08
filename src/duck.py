@@ -24,11 +24,12 @@ class Duck(pygame.sprite.Sprite):
             self.image = self.njit
         # Intialize Sprite At Random X-Location
         
-        self.rect = self.image.get_rect()
+        self.rect = pygame.Rect(self.image.get_rect().left + 40, self.image.get_rect().top, 40, self.image.get_rect().height)
         self.rect.x = randint(10, 1000)
         self.rect.y = 350
         self.speed = 5
         self.directionCount=0
+        
 
 
         # Direction Constants
@@ -80,53 +81,36 @@ class Duck(pygame.sprite.Sprite):
     def update(self):
         """ Update the sprite """
         #Check if the duck is alive
-        if self.alive:
-            # Duck is alive
-            if (
-                self.rect.bottom < 0
-                or self.rect.right < 0
-                or self.rect.left > 640
-            ):
-                # Duck is off the screen, destroy
-                self.kill()
+        
+    
+        if (
+            self.rect.bottom < 0
+            or self.rect.right < 0
+            or self.rect.left > 640
+        ):
+            # Duck is off the screen, destroy
+            self.kill()
 
-            # Check if the duck should try and change directions
-            if self.directionCount < 100:
-                self.directionCount += 1
-            else:
-                self.change_direction()
-                self.directionCount = 0
-
-            # Check if the duck is going straight and change velocity
-            if self.straight:
-                if self.direction == self.RIGHT:
-                    self.move_right()
-                else:
-                    self.move_left()
-            else:
-                # Duck is flying upwards
-                self.move_up()
-                self.change_direction()
+        # Check if the duck should try and change directions
+        if self.directionCount < 100:
+            self.directionCount += 1
         else:
-            # Duck is Dead, Destroy once it hits the ground
-            if self.rect.bottom > 370:
-                self.kill()
+            self.change_direction()
+            self.directionCount = 0
+
+        # Check if the duck is going straight and change velocity
+        if self.straight:
+            if self.direction == self.RIGHT:
+                self.move_right()
+            else:
+                self.move_left()
+        else:
+            # Duck is flying upwards
+            self.move_up()
+            self.change_direction()
+           
        
 
-    def shot(self):
-        """ Kill the sprite """
-        # Pass the update_score function as a callback
-        self.callback(self.points)  #adds points
-
-        self.alive = False  # Set the duck to dead
-        self.image = self.die[0]  #Replaces image, might do large X over mascots eyes
-
-        self.frame = 0
-        self.animationCount = 0
-
-        # Freeze the duck
-        self.dx = 0
-        self.dy = 0
 
 
     

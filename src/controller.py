@@ -35,6 +35,7 @@ class Controller:
       self.score=0
       self.total_shots=0
       self.ducks_hit=0
+      self.total_ducks = self.num_mascots
   
      
 
@@ -81,10 +82,11 @@ class Controller:
               s.kill
               self.ducks_hit+=1
               self.score+=100
+              self.total_ducks-=1
+        if self.total_ducks < self.num_mascots:
+          for _ in range (self.num_mascots-self.total_ducks):
+            self.mascots.add(Duck())
 
-          self.total_shots+=1
-      
-      
       self.clock.update_clock
       if self.clock.update_clock == False: #if time = 0, go to endloop
         self.state=="END"
