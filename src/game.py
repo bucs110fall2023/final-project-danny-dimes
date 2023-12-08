@@ -13,13 +13,7 @@ class Game(pygame.sprite.Sprite):
     Returns: None
     """
     image = pygame.image.load("Sprites\spawner.png")
-
     
-
-    # State of Game
-    paused = False  # True when game is paused
-    over = False  # True when game is over
-
     # Label for total points
     score_label = pygame.font.Font(None, 25).render("0", True, (255, 255, 255))
     score_rect = score_label.get_rect(left=500, y=428)
@@ -30,10 +24,6 @@ class Game(pygame.sprite.Sprite):
 
     def __init__(self):
         super(Game, self).__init__()
-
-        
-
-       
 
         # Counters to delay events
         self.spawn_counter = 0

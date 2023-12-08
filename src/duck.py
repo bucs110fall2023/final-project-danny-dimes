@@ -14,33 +14,33 @@ class Duck(pygame.sprite.Sprite):
 
         # Sprites for the Duck
         self.flyRight = [
-            pygame.image.load(f"assets/njit"),
-            pygame.image.load(f"assets/ualbany"),
-            pygame.image.load(f"assets/ualbany"),
+            pygame.image.load(f"assets/njit.png"),
+            pygame.image.load(f"assets/ualbany.png"),
+            pygame.image.load(f"assets/ualbany.png"),
         ]
 
         self.flyStraightRight = [
-            pygame.image.load(f"assets/njit"),
-            pygame.image.load(f"assets/ualbany"),
-            pygame.image.load(f"assets/ualbany"),
+            pygame.image.load(f"assets/njit.png"),
+            pygame.image.load(f"assets/ualbany.png"),
+            pygame.image.load(f"assets/ualbany.png"),
         ]
 
         self.flyLeft = [
-            pygame.image.load(f"assets/njit"),
-            pygame.image.load(f"assets/ualbany"),
-            pygame.image.load(f"assets/ualbany"),
+            pygame.image.load(f"assets/njit.png"),
+            pygame.image.load(f"assets/ualbany.png"),
+            pygame.image.load(f"assets/ualbany.png"),
         ]
 
         self.flyStraightLeft = [
-            pygame.image.load(f"assets/njit"),
-            pygame.image.load(f"assets/ualbany"),
-            pygame.image.load(f"assets/ualbany"),
+            pygame.image.load(f"assets/njit.png"),
+            pygame.image.load(f"assets/ualbany.png"),
+            pygame.image.load(f"assets/ualbany.png"),
         ]
 
         self.die = [
-            pygame.image.load(f"assets/njit"),
-            pygame.image.load(f"assets/ualbany"),
-            pygame.image.load(f"assets/ualbany"),
+            pygame.image.load(f"assets/njit.png"),
+            pygame.image.load(f"assets/ualbany.png"),
+            pygame.image.load(f"assets/ualbany.png"),
         ]
 
         # Intialize Sprite At Random X-Location

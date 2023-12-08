@@ -1,6 +1,8 @@
 import pygame 
 from src.duck import Duck
 from src.clock import Clock
+from src.scoreboard import Scoreboard
+from src.shotcounter import Shotcounter
 
 from src.background import Background
 
@@ -16,15 +18,23 @@ class Controller:
       self.timer = pygame.time.Clock()
       self.mascots = pygame.sprite.Group()
       num_mascots=3
-      newDuck = Duck
+      #possibly add interval for adding (i.e spawns every 5 seconds)
       for _ in range (num_mascots):
-        self.mascots.add(newDuck)
-      setClock = Clock
-      self.clock = setClock
+        self.mascots.add(Duck())
+    
+      self.clock = Clock
+      self.scoreboard = Scoreboard
+      self.shotcounter = Shotcounter
+
+      
 
       self.state="GAME"
 
-
+    #Score variables
+      self.score=0
+      self.total_shots=0
+      self.ducks_hit=0
+  
      
 
       # Instructions Labels
@@ -40,7 +50,7 @@ class Controller:
 
       # # Paused Game Sprite
       # self.paused = pygame.sprite.Sprite()
-      # #self.paused.image = pygame.image.load("Sprites/paused.png")  #change
+      # #self.paused.image = pygame.image.load("assets/paused.png")  #change
       # self.paused.rect = self.paused.image.get_rect(center=(320, 240))
       # self.paused.dx = 0
       # self.paused.dy = 0
@@ -57,13 +67,6 @@ class Controller:
       elif self.state =="END":
         self.endloop()
 
-  #scoring
-  score = 0
-  ducks_hit = 0
-  total_shots = 0  # Total Shots Taken
-  total_ducks = 0  # Total Ducks Spawned
-
-
   def gameloop(self): #actual game goes here
     while True:
       for event in pygame.event.get():
@@ -74,17 +77,25 @@ class Controller:
           for s in self.mascots:
             if s.rect.collidepoint(event.pos):
               s.kill
-              ducks_hit+=1
+              self.ducks_hit+=1
+              self.score+=100
               #add to points
-          total_shots+=1
+          self.total_shots+=1
       
+
       self.clock.update_clock
+      if self.clock.update_clock == False: #if time = 0, go to endloop
+        self.state=="END"
+      
+        
       self.mascots.update #update mascots
+      self.scoreboard.update(self,self.score)#point variable inside
+      self.shotcounter.update(self,self.total_shots)
 
+      #redraw models
+      #redraw background
 
-      #if time = 0, end game
-
-
+      pygame.display.flip()
 
         #elif event.type == pygame.KEYDOWN:
           #if event.key == pygame.K_p:

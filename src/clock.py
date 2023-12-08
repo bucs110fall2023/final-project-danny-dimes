@@ -36,7 +36,8 @@ class Clock(pygame.sprite.Sprite):
         if self.seconds <= 0:
             self.started = False
             #set loop to endloop here
-            pygame.mouse.set_visible(True)  # Show mouse
+            pygame.mouse.set_visible(True)  # Show 
+            return False
 
         # Change the clock's color to red when it gets down to the last minute
         if self.seconds <= 10:
