@@ -99,10 +99,11 @@ class Controller:
       #redraw models
       self.all_sprites.draw(self.screen)
       #redraw scoreboard
-      # self.screen.blit(self.scoreboard.image, self.scoreboard.rect)
+      #self.screen.blit(self.scoreboard.image, self.scoreboard.rect)
 
       self.mascots.draw(self.screen)  # Draw the mascots on the screen
-      self.screen.blit(self.timerDisplay, (self.width // 2, self.height // 2))
+      self.screen.blit(self.timerDisplay, (self.width // 2, self.height // 1.07))
+      
       pygame.display.flip()
       
       
