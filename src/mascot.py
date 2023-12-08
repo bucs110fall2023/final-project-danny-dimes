@@ -4,8 +4,7 @@ from random import randint
 
 class Mascot(pygame.sprite.Sprite):
     """
-    This represents a mascot in the Duck Hunt game. 
-    It handles the mascot's movement, animation, and response to being shot.
+    Desc: Initializes a mascot sprite with random image selection and movement behavior.
     Args: None
     Returns: None
     """

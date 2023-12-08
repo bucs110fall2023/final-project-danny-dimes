@@ -2,9 +2,10 @@ import pygame
 
 class Background(pygame.sprite.Sprite):
     """
-    This represents a mascot in the Duck Hunt game. 
-    It handles the mascot's movement, animation, and response to being shot.
-    Args: None
+    Desc: Initializes the game's background with a specified image file and location.
+    Args:
+    - image_file (str): Path to the image file for the background (default: 'assets/background.png')
+    - location (list): Coordinates specifying the top-left corner position of the background (default: [0, 0])
     Returns: None
     """
     def __init__(self, image_file= 'assets/background.png', location=[0,0]):

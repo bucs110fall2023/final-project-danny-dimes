@@ -4,10 +4,10 @@ from src.background import Background
 
 class Controller:
   """
-  This represents a mascot in the Duck Hunt game. 
-  It handles the mascot's movement, animation, and response to being shot.
-  Args: None
-  Returns: None
+  Desc: Initializes and manages the game environment, 
+  handles events, and controls the game state transitions.
+  Args: none
+  Returns: none
   """
   def __init__(self):
       pygame.init()
