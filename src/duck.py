@@ -96,6 +96,7 @@ class Duck(pygame.sprite.Sprite):
             # Change duck to straight or up
             self.straight = not self.straight
 
+
     def update(self):
         """ Update the sprite """
         # Check if the duck is alive
@@ -118,15 +119,13 @@ class Duck(pygame.sprite.Sprite):
 
             # Check if the duck is going straight and change velocity
             if self.straight:
-                self.dy = 0
-
                 if self.direction == self.RIGHT:
-                    self.dx = 1
+                    self.move_right()
                 else:
-                    self.dx = -1
+                    self.move_left()
             else:
                 # Duck is flying upwards
-                self.dy = -1
+                self.move_up()
         else:
             # Duck is Dead, Destroy once it hits the ground
             if self.rect.bottom > 370:
