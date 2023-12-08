@@ -55,8 +55,6 @@ class Controller:
       # self.paused.dx = 0
       # self.paused.dy = 0
       
- 
-      
   def mainloop(self):
     while True:
       if self.state == "GAME":
@@ -94,58 +92,39 @@ class Controller:
 
       #redraw models
       #redraw background
-
+      self.screen.fill((255, 255, 255))  # Fill the screen with white
+      self.screen.blit(self.BackGround.image, self.BackGround.rect)
+      self.mascots.draw(self.screen)  # Draw the mascots on the screen
+      self.screen.blit(self.instructions, self.instructions_rect)
+      self.screen.blit(self.instructions2, self.instructions2_rect)
       pygame.display.flip()
-
-        #elif event.type == pygame.KEYDOWN:
-          #if event.key == pygame.K_p:
-            #self.state = "PAUSE"  # Pause game
-              #return  # Exit the gameloop, as the game is paused
             
       # Update game objects
       self.timer.tick(self.fps)
-   
-    
-#do cursor last
 
-  #def pauseloop(self):
-    # for event in pygame.event.get():
-    #   if event.type == pygame.QUIT:
-    #     self.state = "END"
-    #   elif event.type == pygame.KEYDOWN:
-    #     if event.key == pygame.K_p:
-    #       self.state = "GAME"  # Resume the game
-    #     # Handle other pause menu events
+  def pauseloop(self):
+    # Handle events specific to the "PAUSE" state
+    for event in pygame.event.get():
+      if event.type == pygame.QUIT:
+        self.state = "END"
+      elif event.type == pygame.KEYDOWN:
+        if event.key == pygame.K_p:
+          self.state = "GAME"  # Resume the game
 
+        # Render the pause screen
+    self.screen.fill((255, 255, 255))  # Fill the screen with white
+    self.screen.blit(self.instructions, self.instructions_rect)
+    self.screen.blit(self.instructions2, self.instructions2_rect)
+    font = pygame.font.Font(None, 36)
+    text = font.render("Paused", True, (255, 0, 0))
+    text_rect = text.get_rect(center=(self.width // 2, self.height // 2))
+    self.screen.blit(text, text_rect)
+    pygame.display.flip()
 
+  def endloop(self):
+    pygame.quit()
+    exit()
 
-  #def endloop(self):
-#     #when timer = 0
-#    # Final Results Labels
-#         self.results = pygame.font.Font(None, 35).render("", True, (255, 255, 255))
-#         self.results_rect = self.results.get_rect(x=320, y=100)  # How many ducks were hit
-#         self.results2 = pygame.font.Font(None, 35).render("", True, (255, 255, 255))
-#         self.results2_rect = self.results2.get_rect(x=320, y=140)  # Accuracy
-
-#                 # Check if the game time is up
-#         if Game.over:
-#             self.menu_counter = 0
-#             self.playing = False
-#             Game.over = True
-
-#             # Show results
-#             self.results.value = (
-#                 "You hit " + str(Game.ducks_hit) + " of " + str(Game.total_ducks) + " ducks!"
-#             )
-#             self.results2.value = "Accuracy: " + str(
-#                 int((int(Game.ducks_hit) / Game.total_shots) * 100)
-#             ) + "%"
-
-#             self.add(self.results)
-#             self.add(self.results2)
-
-#             self.kill()
-
-
-#     pygame.quit()
-#     exit()
+if __name__ == "__main__":
+    duck_hunt_controller = Controller()  # Updated class name
+    duck_hunt_controller.mainloop()  # Updated method name
