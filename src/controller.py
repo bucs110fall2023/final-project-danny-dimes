@@ -1,5 +1,5 @@
 import pygame 
-from src.duck import Duck
+from src.mascot import Duck
 from src.scoreboard import Scoreboard
 from src.background import Background
 

@@ -2,17 +2,17 @@ import pygame
 from random import randint
 
 
-class Duck(pygame.sprite.Sprite):
+class Mascot(pygame.sprite.Sprite):
     """
-    This represents a duck in the Duck Hunt game. 
-    It handles the duck's movement, animation, and response to being shot.
+    This represents a mascot in the Duck Hunt game. 
+    It handles the mascot's movement, animation, and response to being shot.
     Args: None
     Returns: None
     """
     def __init__(self):
-        super(Duck, self).__init__()
+        super(Mascot, self).__init__()
 
-        # Sprites for the Duck
+        # Sprites for the mascot
         spriteChooser = randint(0,2)
         
         self.ualbany = pygame.image.load(f"assets/ualbany.png")
@@ -50,10 +50,10 @@ class Duck(pygame.sprite.Sprite):
         self.RIGHT = 1
         self.LEFT = 2
 
-        # Duck Variables
+        # mascot Variables
         self.alive = True
         self.direction = randint(1, 2)
-        self.straight = False  # True if duck is flying straight
+        self.straight = False  # True if mascot is flying straight
         self.points = 10
 
 
@@ -76,7 +76,7 @@ class Duck(pygame.sprite.Sprite):
         randomNum = randint(1, 200)
 
         if randomNum % 5 == 0:
-            # Switch the duck's direction
+            # Switch the mascot's direction
             if self.direction == self.RIGHT:
                 self.direction = self.LEFT
                 self.move_left()
@@ -88,7 +88,7 @@ class Duck(pygame.sprite.Sprite):
         randomNum = randint(1, 400)
 
         if randomNum % 5 == 0:
-            # Change duck to straight or up
+            # Change mascot to straight or up
             self.straight = not self.straight
 
 
@@ -98,21 +98,21 @@ class Duck(pygame.sprite.Sprite):
         
     
      
-        # Check if the duck should try and change directions
+        # Check if the mascot should try and change directions
         if self.directionCount < 100:
             self.directionCount += 1
         else:
             self.change_direction()
             self.directionCount = 0
 
-        # Check if the duck is going straight and change velocity
+        # Check if the mascot is going straight and change velocity
         if self.straight:
             if self.direction == self.RIGHT:
                 self.move_right()
             else:
                 self.move_left()
         else:
-            # Duck is flying upwards
+            # mascot is flying upwards
             self.move_up()
             self.change_direction()
 
