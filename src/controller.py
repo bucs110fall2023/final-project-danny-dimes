@@ -100,11 +100,13 @@ class Controller:
       for s in self.mascots:
         s.update() #update mascots
       self.screen.blit(self.timerDisplay, (100,100))
-      # self.scoreboard.update(self,self.score)#point variable inside
+        self.scoreboard.update(self.score)#point variable inside
       
 
       #redraw models
       self.all_sprites.draw(self.screen)
+      #redraw scoreboard
+      self.screen.blit(self.scoreboard.image, self.scoreboard.rect)
 
       self.mascots.draw(self.screen)  # Draw the mascots on the screen
       
