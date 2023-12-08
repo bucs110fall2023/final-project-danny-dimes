@@ -13,7 +13,7 @@ class Duck(pygame.sprite.Sprite):
         super(Duck, self).__init__()
 
         # Sprites for the Duck
-        spriteChooser = randint(0,1)
+        spriteChooser = randint(0,2)
         
         self.ualbany = pygame.image.load(f"assets/ualbany.png")
         self.njit = pygame.image.load(f"assets/njit.png")
@@ -27,9 +27,11 @@ class Duck(pygame.sprite.Sprite):
         if spriteChooser == 2:
             self.image = self.umaine
             self.image = pygame.transform.scale(self.image, (150,150))
-        # Intialize Sprite At Random X-Location
         
-        self.rect = pygame.Rect(self.image.get_rect().left + 100, self.image.get_rect().top, 100, self.image.get_rect().height+100)
+        
+        self.rect = pygame.Rect(self.image.get_rect().left + 100, self.image.get_rect().top, 100, self.image.get_rect().height+50)
+
+        #spawn sprite at x location
         self.leftOrRight=randint(0,10)
         if self.leftOrRight%2==0:
             self.rect.x = 10

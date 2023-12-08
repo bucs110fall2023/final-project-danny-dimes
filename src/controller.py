@@ -10,7 +10,9 @@ class Controller:
       pygame.init()
       pygame.font.init()
       #set background
-      self.screen = pygame.display.set_mode()
+      
+      self.screen = pygame.display.set_mode((0, 0), pygame.FULLSCREEN)
+      self.width, self.height = pygame.display.get_window_size()
       self.background = Background()
       self.screen.blit(self.background.image, self.background.rect)
       self.fps = 60
@@ -19,10 +21,12 @@ class Controller:
       self.num_mascots=5
 
 
-
+      #setting up clock
       self.font = pygame.font.SysFont(None, 50)
-      self.timer=self.font.render("1:00", True, "white")
-      self.screen.blit(self.timer, (100,100))
+      self.timerSecs = 60
+      self.timerDisplay=self.font.render("1:00", True, "white")
+      self.timer = pygame.USEREVENT + 1                                                
+      pygame.time.set_timer(self.timer, 1000)    
       
 
 
@@ -63,7 +67,14 @@ class Controller:
         if event.type == pygame.QUIT:
             pygame.quit()
             exit()
-        elif event.type == pygame.MOUSEBUTTONDOWN:
+        if self.timerSecs>0:
+          self.timerSecs-=1
+          self.timerDisplay = self.font.render( "0:" + str(self.timerSecs).rjust(2, "0"),True,"white")
+        else:
+          self.state="END"
+          return
+
+        if event.type == pygame.MOUSEBUTTONDOWN:
           for s in self.mascots:
             if s.rect.collidepoint(event.pos):
               s.kill()
@@ -75,7 +86,11 @@ class Controller:
           if event.key == pygame.K_ESCAPE:
             self.state = "END" 
             return
-          
+          elif event.key == pygame.K_p:
+            
+            self.state="PAUSE"
+            return
+
 
       self.clock.update_clock
       if self.clock.update_clock == False: #if time = 0, go to endloop
@@ -84,17 +99,15 @@ class Controller:
         
       for s in self.mascots:
         s.update() #update mascots
+      self.screen.blit(self.timerDisplay, (100,100))
       # self.scoreboard.update(self,self.score)#point variable inside
       
 
       #redraw models
       self.all_sprites.draw(self.screen)
-      #redraw background
-      # self.screen.fill((255, 255, 255))  # Fill the screen with white
-      # self.screen.blit(self.background.image, self.background.rect)
+
       self.mascots.draw(self.screen)  # Draw the mascots on the screen
-      #self.screen.blit(self.instructions, self.instructions_rect)
-      #self.screen.blit(self.instructions2, self.instructions2_rect)
+      
       pygame.display.flip()
       
       
@@ -110,10 +123,8 @@ class Controller:
 
         # Render the pause screen
     self.screen.fill((255, 255, 255))  # Fill the screen with white
-    self.screen.blit(self.instructions, self.instructions_rect)
-    self.screen.blit(self.instructions2, self.instructions2_rect)
     font = pygame.font.Font(None, 36)
-    text = font.render("Paused", True, (255, 0, 0))
+    text = font.render("Paused", True, "black")
     text_rect = text.get_rect(center=(self.width // 2, self.height // 2))
     self.screen.blit(text, text_rect)
     pygame.display.flip()
@@ -122,6 +133,6 @@ class Controller:
     pygame.quit()
     exit()
 
-if __name__ == "__main__":
-    duck_hunt_controller = Controller()  # Updated class name
-    duck_hunt_controller.mainloop()  # Updated method name
+# if __name__ == "__main__":
+#     duck_hunt_controller = Controller()  # Updated class name
+#     duck_hunt_controller.mainloop()  # Updated method name
