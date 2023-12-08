@@ -2,7 +2,6 @@ import pygame
 from src.duck import Duck
 from src.clock import Clock
 from src.scoreboard import Scoreboard
-from src.shotcounter import Shotcounter
 
 from src.background import Background
 
