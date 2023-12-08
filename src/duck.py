@@ -46,15 +46,14 @@ class Duck(pygame.sprite.Sprite):
         # Intialize Sprite At Random X-Location
         self.image = self.flyRight[0]
         self.rect = self.image.get_rect()
-        self.rect.x = randint(10, 470)
+        self.rect.x = randint(10, 1000)
         self.rect.y = 350
-        self.dx = 0
-        self.dy = -1
+        self.speed = 1
 
-        
+
         # Direction Constants
-        self.RIGHT = 1
-        self.LEFT = 2
+        self.RIGHT = 0
+        self.LEFT = 1
 
         # Duck Variables
         self.alive = True
@@ -63,11 +62,19 @@ class Duck(pygame.sprite.Sprite):
         self.points = 10
 
 
-        # Set velocity based on direction
-        if self.direction == self.RIGHT:
-            self.dx = 0.5
-        else:
-            self.dx = -0.5
+    def move_up(self):
+        self.rect.y -= self.speed
+
+    def move_down(self):
+        self.rect.y += self.speed
+
+    def move_right(self):
+        self.rect.x += self.speed
+
+    def move_left(self):
+        self.rect.x -= self.speed
+
+
 
     def change_direction(self):
         """ Decide to change sprite's direction """
@@ -77,13 +84,13 @@ class Duck(pygame.sprite.Sprite):
             # Switch the duck's direction
             if self.direction == self.RIGHT:
                 self.direction = self.LEFT
-                self.dx = -0.5
+                self.move_left()
             else:
                 self.direction = self.RIGHT
-                self.dx = 0.5
+                self.move_right()
 
         # Decide if it will fly straight or not
-        randomNum = randint(1, 340)
+        randomNum = randint(1, 400)
 
         if randomNum % 5 == 0:
             # Change duck to straight or up

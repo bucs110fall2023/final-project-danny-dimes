@@ -12,7 +12,6 @@ class Controller:
       pygame.init()
       #set background
       self.screen = pygame.display.set_mode()
-      self.width, self.height = pygame.display.get_window_size()
       self.background = Background()
       self.screen.blit(self.background.image, self.background.rect)
       self.fps = 60
@@ -39,15 +38,15 @@ class Controller:
      
 
       # Instructions Labels
-      self.instructions = pygame.font.Font(None, 35).render(
-          "Shoot as many ducks as possible in 1 minute!", True, (255, 255, 255)
-      )
-      self.instructions_rect = self.instructions.get_rect(x=320, y=100)
+      # self.instructions = pygame.font.Font(None, 35).render(
+      #     "Shoot as many ducks as possible in 1 minute!", True, (255, 255, 255)
+      # )
+      # self.instructions_rect = self.instructions.get_rect(x=320, y=100)
 
-      self.instructions2 = pygame.font.Font(None, 35).render(
-          "Press \"P\" To Pause", True, (255, 255, 255)
-      )
-      self.instructions2_rect = self.instructions2.get_rect(x=320, y=140)
+      # self.instructions2 = pygame.font.Font(None, 35).render(
+      #     "Press \"P\" To Pause", True, (255, 255, 255)
+      # )
+      # self.instructions2_rect = self.instructions2.get_rect(x=320, y=140)
 
       # # Paused Game Sprite
       # self.paused = pygame.sprite.Sprite()
@@ -98,8 +97,8 @@ class Controller:
       self.screen.fill((255, 255, 255))  # Fill the screen with white
       self.screen.blit(self.background.image, self.background.rect)
       self.mascots.draw(self.screen)  # Draw the mascots on the screen
-      self.screen.blit(self.instructions, self.instructions_rect)
-      self.screen.blit(self.instructions2, self.instructions2_rect)
+      #self.screen.blit(self.instructions, self.instructions_rect)
+      #self.screen.blit(self.instructions2, self.instructions2_rect)
       pygame.display.flip()
             
       # Update game objects
