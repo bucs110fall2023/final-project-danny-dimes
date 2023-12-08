@@ -19,14 +19,13 @@ class Controller:
       self.num_mascots=5
 
 
-      #setting up clock
+      #setting up timer
       self.font = pygame.font.SysFont(None, 50)
       self.timerSecs = 60
       self.timerDisplay=self.font.render("1:00", True, "white")
       self.timer = pygame.USEREVENT                                                
       pygame.time.set_timer(self.timer, 1000)    
 
-      self.clock = Clock
       self.scoreboard = Scoreboard
       
       self.all_sprites = pygame.sprite.Group()
@@ -34,21 +33,20 @@ class Controller:
       self.all_sprites.add(self.background)
       self.all_sprites.add(self.mascots)
       for _ in range (self.num_mascots):
-        self.mascots.add(Duck())
+        self.mascots.add(Mascot())
 
       self.state="GAME"
 
     #Score variables
       self.score=0
       self.total_shots=0
-      self.ducks_hit=0
-      self.total_ducks = self.num_mascots
+      self.mascots_hit=0
+      self.total_mascots = self.num_mascots
 
   def mainloop(self):
     while True:
       if self.state == "GAME":
         self.gameloop()
-        self.clock.start_clock
       elif self.state == "PAUSE":
         self.pauseloop()  
       elif self.state =="END":
@@ -75,10 +73,10 @@ class Controller:
           for s in self.mascots:
             if s.rect.collidepoint(event.pos):
               s.kill()
-              self.ducks_hit+=1
+              self.mascots_hit+=1
               self.score+=100
-              self.total_ducks-=1
-              self.mascots.add(Duck())
+              self.total_mascots-=1
+              self.mascots.add(Mascot())
         elif event.type == pygame.KEYDOWN:
           if event.key == pygame.K_ESCAPE:
             self.state = "END" 
@@ -128,6 +126,3 @@ class Controller:
     pygame.quit()
     exit()
 
-# if __name__ == "__main__":
-#     duck_hunt_controller = Controller()  # Updated class name
-#     duck_hunt_controller.mainloop()  # Updated method name
