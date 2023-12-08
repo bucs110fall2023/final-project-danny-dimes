@@ -16,7 +16,6 @@ class Controller:
       self.background = Background()
       self.screen.blit(self.background.image, self.background.rect)
       self.fps = 60
-      self.timer = pygame.time.Clock()
       self.mascots = pygame.sprite.Group()
       self.num_mascots=5
 
@@ -25,13 +24,9 @@ class Controller:
       self.font = pygame.font.SysFont(None, 50)
       self.timerSecs = 60
       self.timerDisplay=self.font.render("1:00", True, "white")
-      self.timer = pygame.USEREVENT + 1                                                
+      self.timer = pygame.USEREVENT                                                
       pygame.time.set_timer(self.timer, 1000)    
-      
 
-
-      
-    
       self.clock = Clock
       self.scoreboard = Scoreboard
       
@@ -67,12 +62,15 @@ class Controller:
         if event.type == pygame.QUIT:
             pygame.quit()
             exit()
-        if self.timerSecs>0:
-          self.timerSecs-=1
-          self.timerDisplay = self.font.render( "0:" + str(self.timerSecs).rjust(2, "0"),True,"white")
-        else:
-          self.state="END"
-          return
+        if event.type==self.timer:
+          if self.timerSecs>0:
+            self.timerSecs-=1
+            print("0:" + str(self.timerSecs).rjust(2, "0"))
+            self.timerDisplay = self.font.render( "0:" + str(self.timerSecs).rjust(2, "0"),True,"white")
+          else:
+            pygame.time.set_timer(self.timer, 0)    
+            self.state="END"
+            return
 
         if event.type == pygame.MOUSEBUTTONDOWN:
           for s in self.mascots:
@@ -91,15 +89,10 @@ class Controller:
             self.state="PAUSE"
             return
 
-
-      self.clock.update_clock
-      if self.clock.update_clock == False: #if time = 0, go to endloop
-        self.state=="END"
-      
-        
       for s in self.mascots:
         s.update() #update mascots
-      self.screen.blit(self.timerDisplay, (100,100))
+
+
       # self.scoreboard.update(self.score)#point variable inside
       
 
@@ -109,7 +102,7 @@ class Controller:
       # self.screen.blit(self.scoreboard.image, self.scoreboard.rect)
 
       self.mascots.draw(self.screen)  # Draw the mascots on the screen
-      
+      self.screen.blit(self.timerDisplay, (self.width // 2, self.height // 2))
       pygame.display.flip()
       
       
