@@ -13,7 +13,8 @@ class Controller:
       #set background
       self.screen = pygame.display.set_mode()
       self.width, self.height = pygame.display.get_window_size()
-      self.BackGround = Background()
+      self.background = Background()
+      self.screen.blit(self.background.image, self.background.rect)
       self.fps = 60
       self.timer = pygame.time.Clock()
       self.mascots = pygame.sprite.Group()
@@ -25,7 +26,7 @@ class Controller:
       self.clock = Clock
       self.scoreboard = Scoreboard
       self.shotcounter = Shotcounter
-
+      
       
 
       self.state="GAME"
@@ -55,6 +56,8 @@ class Controller:
       # self.paused.dx = 0
       # self.paused.dy = 0
       
+ 
+      
   def mainloop(self):
     while True:
       if self.state == "GAME":
@@ -77,23 +80,23 @@ class Controller:
               s.kill
               self.ducks_hit+=1
               self.score+=100
-              #add to points
+
           self.total_shots+=1
       
-
+      
       self.clock.update_clock
       if self.clock.update_clock == False: #if time = 0, go to endloop
         self.state=="END"
       
         
       self.mascots.update #update mascots
-      self.scoreboard.update(self,self.score)#point variable inside
-      self.shotcounter.update(self,self.total_shots)
+      # self.scoreboard.update(self,self.score)#point variable inside
+      # self.shotcounter.update(self,self.total_shots)
 
       #redraw models
       #redraw background
       self.screen.fill((255, 255, 255))  # Fill the screen with white
-      self.screen.blit(self.BackGround.image, self.BackGround.rect)
+      self.screen.blit(self.background.image, self.background.rect)
       self.mascots.draw(self.screen)  # Draw the mascots on the screen
       self.screen.blit(self.instructions, self.instructions_rect)
       self.screen.blit(self.instructions2, self.instructions2_rect)
