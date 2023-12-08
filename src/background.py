@@ -1,7 +1,12 @@
 import pygame
 
 class Background(pygame.sprite.Sprite):
-
+    """
+    This represents a mascot in the Duck Hunt game. 
+    It handles the mascot's movement, animation, and response to being shot.
+    Args: None
+    Returns: None
+    """
     def __init__(self, image_file= 'assets/background.png', location=[0,0]):
         super().__init__()
         self.screen = pygame.display.set_mode((0, 0), pygame.FULLSCREEN)
