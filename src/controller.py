@@ -8,6 +8,7 @@ class Controller:
   
   def __init__(self):
       pygame.init()
+      pygame.font.init()
       #set background
       self.screen = pygame.display.set_mode()
       self.background = Background()
@@ -15,8 +16,16 @@ class Controller:
       self.fps = 60
       self.timer = pygame.time.Clock()
       self.mascots = pygame.sprite.Group()
-      self.num_mascots=3
-      #possibly add interval for adding (i.e spawns every 5 seconds)
+      self.num_mascots=5
+
+
+
+      self.font = pygame.font.SysFont(None, 50)
+      self.timer=self.font.render("1:00", True, "white")
+      self.screen.blit(self.timer, (100,100))
+      
+
+
       
     
       self.clock = Clock
@@ -36,29 +45,7 @@ class Controller:
       self.total_shots=0
       self.ducks_hit=0
       self.total_ducks = self.num_mascots
-  
-     
 
-      # Instructions Labels
-      # self.instructions = pygame.font.Font(None, 35).render(
-      #     "Shoot as many ducks as possible in 1 minute!", True, (255, 255, 255)
-      # )
-      # self.instructions_rect = self.instructions.get_rect(x=320, y=100)
-
-      # self.instructions2 = pygame.font.Font(None, 35).render(
-      #     "Press \"P\" To Pause", True, (255, 255, 255)
-      # )
-      # self.instructions2_rect = self.instructions2.get_rect(x=320, y=140)
-
-      # # Paused Game Sprite
-      # self.paused = pygame.sprite.Sprite()
-      # #self.paused.image = pygame.image.load("assets/paused.png")  #change
-      # self.paused.rect = self.paused.image.get_rect(center=(320, 240))
-      # self.paused.dx = 0
-      # self.paused.dy = 0
-      
- 
-      
   def mainloop(self):
     while True:
       if self.state == "GAME":
@@ -79,13 +66,16 @@ class Controller:
         elif event.type == pygame.MOUSEBUTTONDOWN:
           for s in self.mascots:
             if s.rect.collidepoint(event.pos):
-              s.kill
+              s.kill()
               self.ducks_hit+=1
               self.score+=100
               self.total_ducks-=1
-        if self.total_ducks < self.num_mascots:
-          for _ in range (self.num_mascots-self.total_ducks):
-            self.mascots.add(Duck())
+              self.mascots.add(Duck())
+              print("clicked")
+        elif event.type == pygame.KEYDOWN:
+          if event.key == pygame.K_ESCAPE:
+            self.state = "END" 
+          
 
       self.clock.update_clock
       if self.clock.update_clock == False: #if time = 0, go to endloop
@@ -106,7 +96,7 @@ class Controller:
       #self.screen.blit(self.instructions, self.instructions_rect)
       #self.screen.blit(self.instructions2, self.instructions2_rect)
       pygame.display.flip()
-            
+      
       
 
   def pauseloop(self):

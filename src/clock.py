@@ -15,8 +15,7 @@ class Clock(pygame.sprite.Sprite):
         self.image = pygame.draw.rect()
         self.rect = self.image.get_rect(topleft=(0, 0))
 
-        self.font = pygame.font.Font(None, 50)
-        self.timer = self.font.render("1:00", True, (255, 255, 255))
+        
         self.timer_rect = self.timer.get_rect(topleft=(300, 435))
 
         # Clock Properties
@@ -35,13 +34,8 @@ class Clock(pygame.sprite.Sprite):
         # Check if clock has run out of time
         if self.seconds <= 0:
             self.started = False
-            #set loop to endloop here
-            pygame.mouse.set_visible(True)  # Show 
-            return False
 
-        # Change the clock's color to red when it gets down to the last minute
-        if self.seconds <= 10:
-            self.timer = self.font.render("0:" + str(self.seconds).rjust(2, "0"), True, (255, 0, 0))
+            return False
 
     # Update the Clock's Label
     def update_clock(self):
@@ -49,7 +43,7 @@ class Clock(pygame.sprite.Sprite):
 
 
         # Update The Clock's Label
-        self.timer = self.font.render(label, True, (255, 255, 255))
+        self.timer = pygame.font.render(label, True, "white")
 
     # Perform the Clock countdown
     def countdown(self):

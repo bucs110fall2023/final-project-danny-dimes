@@ -17,16 +17,21 @@ class Duck(pygame.sprite.Sprite):
         
         self.ualbany = pygame.image.load(f"assets/ualbany.png")
         self.njit = pygame.image.load(f"assets/njit.png")
+        self.umaine = pygame.image.load(f"assets/umaine.png")
         if spriteChooser == 0:
             self.image = self.ualbany
             self.image = pygame.transform.scale(self.image, (150,150))
         if spriteChooser == 1:
             self.image = self.njit
+            self.image = pygame.transform.scale(self.image, (150,150))
+        if spriteChooser == 2:
+            self.image = self.umaine
+            self.image = pygame.transform.scale(self.image, (150,150))
         # Intialize Sprite At Random X-Location
         
-        self.rect = pygame.Rect(self.image.get_rect().left + 40, self.image.get_rect().top, 40, self.image.get_rect().height)
-        self.rect.x = randint(10, 1000)
-        self.rect.y = 350
+        self.rect = pygame.Rect(self.image.get_rect().left + 100, self.image.get_rect().top, 100, self.image.get_rect().height+100)
+        self.rect.x = randint(10, 500)
+        self.rect.y = randint(100,400)
         self.speed = 5
         self.directionCount=0
         
@@ -86,7 +91,7 @@ class Duck(pygame.sprite.Sprite):
         if (
             self.rect.bottom < 0
             or self.rect.right < 0
-            or self.rect.left > 640
+            or self.rect.left > 1000
         ):
             # Duck is off the screen, destroy
             self.kill()
