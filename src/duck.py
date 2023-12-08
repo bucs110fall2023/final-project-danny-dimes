@@ -30,7 +30,14 @@ class Duck(pygame.sprite.Sprite):
         # Intialize Sprite At Random X-Location
         
         self.rect = pygame.Rect(self.image.get_rect().left + 100, self.image.get_rect().top, 100, self.image.get_rect().height+100)
-        self.rect.x = randint(10, 500)
+        self.leftOrRight=randint(0,10)
+        if self.leftOrRight%2==0:
+            self.rect.x = 10
+        else:
+            self.rect.x=1500
+            
+
+        
         self.rect.y = randint(100,400)
         self.speed = 5
         self.directionCount=0
@@ -64,7 +71,7 @@ class Duck(pygame.sprite.Sprite):
 
     def change_direction(self):
         """ Decide to change sprite's direction """
-        randomNum = randint(1, 340)
+        randomNum = randint(1, 200)
 
         if randomNum % 5 == 0:
             # Switch the duck's direction
@@ -85,16 +92,10 @@ class Duck(pygame.sprite.Sprite):
 
     def update(self):
         """ Update the sprite """
-        #Check if the duck is alive
+       
         
     
-        if (self.rect.bottom < 0):
-            self.move_up()
-        elif (self.rect.right < 0):
-            self.move_right()
-        elif (self.rect.left > 1500):
-            self.move_left()
-
+     
         # Check if the duck should try and change directions
         if self.directionCount < 100:
             self.directionCount += 1
@@ -112,7 +113,16 @@ class Duck(pygame.sprite.Sprite):
             # Duck is flying upwards
             self.move_up()
             self.change_direction()
-           
+
+
+        if (self.rect.bottom < 0):
+            self.move_up()
+        elif (self.rect.left < 0):
+            self.direction=self.RIGHT
+            
+        elif (self.rect.right > 1500):
+            self.direction=self.LEFT
+
        
 
 

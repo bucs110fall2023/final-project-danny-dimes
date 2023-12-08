@@ -71,10 +71,10 @@ class Controller:
               self.score+=100
               self.total_ducks-=1
               self.mascots.add(Duck())
-              print("clicked")
         elif event.type == pygame.KEYDOWN:
           if event.key == pygame.K_ESCAPE:
             self.state = "END" 
+            return
           
 
       self.clock.update_clock
