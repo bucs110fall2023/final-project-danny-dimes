@@ -90,7 +90,7 @@ class Controller:
         
       self.mascots.update #update mascots
       # self.scoreboard.update(self,self.score)#point variable inside
-      # self.shotcounter.update(self,self.total_shots)
+      
 
       #redraw models
       #redraw background
