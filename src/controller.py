@@ -1,6 +1,5 @@
 import pygame 
 from src.mascot import Mascot
-from src.scoreboard import Scoreboard
 from src.background import Background
 
 class Controller:
@@ -26,7 +25,11 @@ class Controller:
       self.timer = pygame.USEREVENT                                                
       pygame.time.set_timer(self.timer, 1000)    
 
-      self.scoreboard = Scoreboard
+
+
+    #setting up scoreboard
+      self.scoreboardDisplay= self.font.render("0", True, "white")
+
       
       self.all_sprites = pygame.sprite.Group()
       
@@ -77,6 +80,10 @@ class Controller:
               self.score+=100
               self.total_mascots-=1
               self.mascots.add(Mascot())
+              self.scoreboardDisplay= self.font.render(str(self.score), True, "white")
+
+
+        
         elif event.type == pygame.KEYDOWN:
           if event.key == pygame.K_ESCAPE:
             self.state = "END" 
@@ -90,13 +97,12 @@ class Controller:
         s.update() #update mascots
 
 
-      # self.scoreboard.update(self.score)#point variable inside
       
 
       #redraw models
       self.all_sprites.draw(self.screen)
       #redraw scoreboard
-      #self.screen.blit(self.scoreboard.image, self.scoreboard.rect)
+      self.screen.blit(self.scoreboardDisplay, (self.width // 2, self.height // 2) )
 
       self.mascots.draw(self.screen)  # Draw the mascots on the screen
       self.screen.blit(self.timerDisplay, (self.width // 2, self.height // 1.07))
