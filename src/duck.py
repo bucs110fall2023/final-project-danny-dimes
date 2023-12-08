@@ -88,13 +88,12 @@ class Duck(pygame.sprite.Sprite):
         #Check if the duck is alive
         
     
-        if (
-            self.rect.bottom < 0
-            or self.rect.right < 0
-            or self.rect.left > 1000
-        ):
-            # Duck is off the screen, destroy
-            self.kill()
+        if (self.rect.bottom < 0):
+            self.move_up()
+        elif (self.rect.right < 0):
+            self.move_right()
+        elif (self.rect.left > 1500):
+            self.move_left()
 
         # Check if the duck should try and change directions
         if self.directionCount < 100:
