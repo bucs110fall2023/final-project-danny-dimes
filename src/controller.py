@@ -24,7 +24,7 @@ class Controller:
 
 
       #setting up timer
-      self.font = pygame.font.SysFont(None, 50)
+      self.font = pygame.font.SysFont(None, 100)
       self.timerSecs = 60
       self.timerDisplay=self.font.render("1:00", True, "white")
       self.timer = pygame.USEREVENT                                                
@@ -33,7 +33,8 @@ class Controller:
 
 
     #setting up scoreboard
-      self.scoreboardDisplay= self.font.render("0", True, "white")
+      self.fontOne = pygame.font.SysFont(None, 60)
+      self.scoreboardDisplay= self.fontOne.render("Score: 0", True, "white")
 
       
       self.all_sprites = pygame.sprite.Group()
@@ -70,7 +71,6 @@ class Controller:
         if event.type==self.timer:
           if self.timerSecs>0:
             self.timerSecs-=1
-            print("0:" + str(self.timerSecs).rjust(2, "0"))
             self.timerDisplay = self.font.render( "0:" + str(self.timerSecs).rjust(2, "0"),True,"white")
           else:
             pygame.time.set_timer(self.timer, 0)    
@@ -85,7 +85,7 @@ class Controller:
               self.score+=100
               self.total_mascots-=1
               self.mascots.add(Mascot())
-              self.scoreboardDisplay= self.font.render(str(self.score), True, "white")
+              self.scoreboardDisplay= self.fontOne.render("Score: " + str(self.score), True, "white")
 
 
         
@@ -107,10 +107,10 @@ class Controller:
       #redraw models
       self.all_sprites.draw(self.screen)
       #redraw scoreboard
-      self.screen.blit(self.scoreboardDisplay, (self.width // 2, self.height // 2) )
+      self.screen.blit(self.scoreboardDisplay, (self.width // 1.25, self.height // 1.09) )
 
       self.mascots.draw(self.screen)  # Draw the mascots on the screen
-      self.screen.blit(self.timerDisplay, (self.width // 2, self.height // 1.07))
+      self.screen.blit(self.timerDisplay, (self.width // 2.1, self.height // 1.09))
       
       pygame.display.flip()
       
@@ -127,7 +127,7 @@ class Controller:
 
         # Render the pause screen
     self.screen.fill((255, 255, 255))  # Fill the screen with white
-    font = pygame.font.Font(None, 36)
+    font = pygame.font.Font(None, 100 )
     text = font.render("Paused", True, "black")
     text_rect = text.get_rect(center=(self.width // 2, self.height // 2))
     self.screen.blit(text, text_rect)
