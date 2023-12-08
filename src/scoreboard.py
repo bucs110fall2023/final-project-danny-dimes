@@ -1,6 +1,12 @@
 import pygame
 
 class Scoreboard(pygame.sprite.Sprite):
+    """
+    This represents a mascot in the Duck Hunt game. 
+    It handles the mascot's movement, animation, and response to being shot.
+    Args: None
+    Returns: None
+    """
     def __init__(self, x=10, y=10, width=200, height=50, color=(0, 0, 0)):
         super().__init__()
         self.font = pygame.font.SysFont(None, 36)

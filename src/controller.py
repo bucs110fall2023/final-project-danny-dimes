@@ -4,7 +4,12 @@ from src.scoreboard import Scoreboard
 from src.background import Background
 
 class Controller:
-  
+  """
+  This represents a mascot in the Duck Hunt game. 
+  It handles the mascot's movement, animation, and response to being shot.
+  Args: None
+  Returns: None
+  """
   def __init__(self):
       pygame.init()
       pygame.font.init()
