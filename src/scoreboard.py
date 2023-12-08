@@ -1,18 +1,20 @@
 import pygame
 
 class Scoreboard(pygame.sprite.Sprite):
-    def __init__(self, x=0, y=0, width=175, height=75, color=(200, 0, 200), text="0"):
+    def __init__(self, x=10, y=10, width=200, height=50, color=(0, 0, 0)):
         super().__init__()
+        self.font = pygame.font.SysFont(None, 36)
+        self.text_color = (255, 255, 255)
+        self.score = 0
         self.image = pygame.Surface((width, height))
+        self.image.fill(color)
         self.rect = self.image.get_rect()
-        self.rect.x, self.rect.y = x, y
-        self.color = color
-        self.image.fill(self.color)
+        self.rect.x = x
+        self.rect.y = y
 
-        self.message = pygame.font.SysFont(None, 36).render("Score: " + text, True, "white")
-        self.image.blit(self.message, (20, 20))  # Change coordinates
-
-    def update(self, totalPoints):
-        self.message = pygame.font.SysFont(None, 36).render("Score: " + str(totalPoints), True, "white")
-        self.image.fill(self.color)  # Clear the previous score
-        self.image.blit(self.message, (20, 20))  # Change coordinates
+    def update_score(self, new_score):
+        self.score = new_score
+        text = f"Score: {self.score}"
+        rendered_text = self.font.render(text, True, self.text_color)
+        self.image.fill((0, 0, 0))  # Clear previous score
+        self.image.blit(rendered_text, (10, 10))  # Adjust position as needed
