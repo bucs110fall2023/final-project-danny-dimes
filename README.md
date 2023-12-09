@@ -23,6 +23,7 @@ A version of the classic game Duck Hunt where all the ducks are replaced by Bing
 ### Final Design
 
 ![GUI Final One](assets/in_game.png)
+![GUI Final Two](assets/end_game.png)
 
 ## Program Design
 
