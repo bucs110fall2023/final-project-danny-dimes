@@ -60,11 +60,8 @@ class Mascot(pygame.sprite.Sprite):
         self.LEFT = 2
 
         # mascot Variables
-        self.alive = True
         self.direction = randint(1, 2)
         self.straight = False  # True if mascot is flying straight
-        self.points = 10
-
 
     def move_up(self):
         """ Move sprite up by increment """

@@ -37,8 +37,17 @@ A version of the classic game Duck Hunt where all the ducks are replaced by Bing
 
 ### Classes
 
-mascot class: This represents a mascot in the Mascot Hunt game. It handles the mascot's movement
-background class: Initializes game's background
+mascot class: image, height and width, speed, direction count to move sprite up/down, direction, starting x/y coords, boolean of if sprite is moving straight
+- init: chooses an image to load for the sprite and creates sprite <br />
+- move_up: moves sprite up based on increment
+- move_down: moves sprite down based on increment
+- move_left: moves sprite left based on increment
+- move_right: moves sprite right based on increment
+- change_direction: if moving right, sprite will move left and if moving left the sprite will move right. Will occasionally move sprite up/down
+- update: combines movement and change direction method to move sprite randomly
+
+background class: screen, image, height and width of screen, left and top coordinate of image
+- init: loads background image and creates background for game
 
 
 
