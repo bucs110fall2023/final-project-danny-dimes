@@ -18,23 +18,22 @@ class Controller:
       self.width, self.height = pygame.display.get_window_size()
       self.background = Background()
       self.screen.blit(self.background.image, self.background.rect)
-      self.fps = 60
       self.mascots = pygame.sprite.Group()
       self.num_mascots=5
 
 
       #setting up timer
       self.font = pygame.font.SysFont(None, 100)
-      self.timerSecs = 60
-      self.timerDisplay=self.font.render("1:00", True, "white")
+      self.timer_secs = 60
+      self.timer_display=self.font.render("1:00", True, "white")
       self.timer = pygame.USEREVENT                                                
       pygame.time.set_timer(self.timer, 1000)    
 
 
 
     #setting up scoreboard
-      self.fontOne = pygame.font.SysFont(None, 60)
-      self.scoreboardDisplay= self.fontOne.render("Score: 0", True, "white")
+      self.font_one = pygame.font.SysFont(None, 60)
+      self.scoreboard_display= self.font_one.render("Score: 0", True, "white")
 
       
       self.all_sprites = pygame.sprite.Group()
@@ -50,9 +49,6 @@ class Controller:
       self.score=0
       self.total_shots=0
       self.mascots_hit=0
-    
-    #end variables
-      
       self.total_mascots = self.num_mascots
 
   def mainloop(self):
@@ -72,9 +68,9 @@ class Controller:
             pygame.quit()
             exit()
         if event.type==self.timer:
-          if self.timerSecs>0:
-            self.timerSecs-=1
-            self.timerDisplay = self.font.render( "0:" + str(self.timerSecs).rjust(2, "0"),True,"white")
+          if self.timer_secs>0:
+            self.timer_secs-=1
+            self.timer_display = self.font.render( "0:" + str(self.timer_secs).rjust(2, "0"),True,"white")
           else:
             pygame.time.set_timer(self.timer, 0)    
             self.state="END"
@@ -89,7 +85,7 @@ class Controller:
               self.score+=100
               self.total_mascots-=1
               self.mascots.add(Mascot())
-              self.scoreboardDisplay= self.fontOne.render("Score: " + str(self.score), True, "white")
+              self.scoreboard_display= self.font_one.render("Score: " + str(self.score), True, "white")
             else:
               self.total_shots+=1
         elif event.type == pygame.KEYDOWN:
@@ -110,10 +106,10 @@ class Controller:
       #redraw models
       self.all_sprites.draw(self.screen)
       #redraw scoreboard
-      self.screen.blit(self.scoreboardDisplay, (self.width // 1.25, self.height // 1.09) )
+      self.screen.blit(self.scoreboard_display, (self.width // 1.25, self.height // 1.09) )
 
       self.mascots.draw(self.screen)  # Draw the mascots on the screen
-      self.screen.blit(self.timerDisplay, (self.width // 2.1, self.height // 1.09))
+      self.screen.blit(self.timer_display, (self.width // 2.1, self.height // 1.09))
       
       pygame.display.flip()
       
@@ -130,8 +126,8 @@ class Controller:
 
         # Render the pause screen
     self.screen.fill((255, 255, 255))
-    pauseFont = pygame.font.Font(None, 100 )
-    text = pauseFont.render("Paused", True, "black")
+    pause_font = pygame.font.Font(None, 100 )
+    text = pause_font.render("Game Paused", True, "black")
     text_rect = text.get_rect(center=(self.width // 2, self.height // 2))
     self.screen.blit(text, text_rect)
     pygame.display.flip()

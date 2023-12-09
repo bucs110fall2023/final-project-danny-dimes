@@ -42,25 +42,18 @@ class Mascot(pygame.sprite.Sprite):
         elif spriteChooser == 6:
             self.image = self.bryant
             self.image = pygame.transform.scale(self.image, (150,150))
-     
-        
-        
+        #sprite 
         self.rect = pygame.Rect(self.image.get_rect().left + 100, self.image.get_rect().top, 100, self.image.get_rect().height+50)
 
-        #spawn sprite at x location
+        #spawn sprite at location
         self.leftOrRight=randint(0,10)
         if self.leftOrRight%2==0:
             self.rect.x = 10
         else:
             self.rect.x=1500
-            
-
-        
         self.rect.y = randint(100,400)
         self.speed = 5
         self.directionCount=0
-        
-
 
         # Direction Constants
         self.RIGHT = 1
@@ -74,15 +67,19 @@ class Mascot(pygame.sprite.Sprite):
 
 
     def move_up(self):
+        """ Move sprite up by increment """
         self.rect.y -= self.speed
 
     def move_down(self):
+        """ Move sprite down by increment """
         self.rect.y += self.speed
 
     def move_right(self):
+        """ Move sprite right by increment """
         self.rect.x += self.speed
 
     def move_left(self):
+        """ Move sprite left by increment """
         self.rect.x -= self.speed
 
 
@@ -107,13 +104,8 @@ class Mascot(pygame.sprite.Sprite):
             # Change mascot to straight or up
             self.straight = not self.straight
 
-
     def update(self):
         """ Update the sprite """
-       
-        
-    
-     
         # Check if the mascot should try and change directions
         if self.directionCount < 100:
             self.directionCount += 1
@@ -131,8 +123,6 @@ class Mascot(pygame.sprite.Sprite):
             # mascot is flying upwards
             self.move_up()
             self.change_direction()
-
-
         if (self.rect.bottom < 0):
             self.move_up()
         elif (self.rect.left < 0):

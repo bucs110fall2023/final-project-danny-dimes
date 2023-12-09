@@ -11,24 +11,18 @@ Michael Icarangal, Markus Massina
 ***
 
 ## Project Description
-
-We plan to build a duck hunting game where you can use a gun with limited ammo to hunt ducks and get points. Our twist on this will be that 
-the ducks will be rival school mascots 
+A version of the classic game Duck Hunt where all the ducks are replaced by Binghamton University's rivals in the AEC! The player will have a chance to eliminate these mascots by clicking on the with the mouse over an interval of one minute! Total mascots hit and accuracy are shown in the game over screen. 
 
 ***    
 
 ## GUI Design
-
-
-
-
 ### Initial Design
 
-![GUI Initial](assets/image.png)
+![GUI Initial](assets/initial_design.png)
 
 ### Final Design
 
-
+![GUI Final One](assets/in_game.png)
 
 ## Program Design
 
