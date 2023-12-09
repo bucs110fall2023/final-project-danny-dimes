@@ -33,6 +33,7 @@ A version of the classic game Duck Hunt where all the ducks are replaced by Bing
 3. Timer
 4. End screen showing mascots hit/accuracy
 5. Different mascots moving in different patterns
+6. Data permanence by keeping scores in highscores.txt
 
 ### Classes
 

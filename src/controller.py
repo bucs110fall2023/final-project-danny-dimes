@@ -96,16 +96,11 @@ class Controller:
             self.state = "END" 
             return
           elif event.key == pygame.K_p:
-            
             self.state="PAUSE"
             return
 
       for s in self.mascots:
         s.update() #update mascots
-
-
-      
-
       #redraw models
       self.all_sprites.draw(self.screen)
       #redraw scoreboard
@@ -115,9 +110,6 @@ class Controller:
       self.screen.blit(self.timer_display, (self.width // 2.1, self.height // 1.09))
       
       pygame.display.flip()
-      
-      
-
   def pauseloop(self):
     "Handles what happens when game is paused"
     for event in pygame.event.get():
@@ -174,9 +166,3 @@ class Controller:
           if event.key == pygame.K_ESCAPE:
             pygame.quit()
             exit()
-
-
-    
-    
-    
-
