@@ -30,14 +30,14 @@ A version of the classic game Duck Hunt where all the ducks are replaced by Bing
 
 1. Total Points 
 2. Pause 
-3. Clock 
+3. Timer
 4. End screen showing mascots hit/accuracy
-5. Different mascots moving in Different Patterns
+5. Different mascots moving in different patterns
 
 ### Classes
 
 mascot class: This represents a mascot in the Mascot Hunt game. It handles the mascot's movement
-background class: Holds game's background
+background class: Initializes game's background
 
 
 

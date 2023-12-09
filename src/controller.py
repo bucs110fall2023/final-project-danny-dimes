@@ -52,6 +52,7 @@ class Controller:
       self.total_mascots = self.num_mascots
 
   def mainloop(self):
+    "Runs certain loop depending on game conditions"
     while True:
       if self.state == "GAME":
         self.gameloop()
@@ -60,7 +61,8 @@ class Controller:
       elif self.state =="END":
         self.endloop()
 
-  def gameloop(self): #actual game goes here
+  def gameloop(self):
+    "Handles game being played"
     while True:
       
       for event in pygame.event.get():
@@ -72,7 +74,8 @@ class Controller:
             self.timer_secs-=1
             self.timer_display = self.font.render( "0:" + str(self.timer_secs).rjust(2, "0"),True,"white")
           else:
-            pygame.time.set_timer(self.timer, 0)    
+            pygame.time.set_timer(self.timer, 0) 
+              
             self.state="END"
             return
 
@@ -116,7 +119,7 @@ class Controller:
       
 
   def pauseloop(self):
-    # Handle events specific to the "PAUSE" state
+    "Handles what happens when game is paused"
     for event in pygame.event.get():
       if event.type == pygame.QUIT:
         self.state = "END"
@@ -133,8 +136,11 @@ class Controller:
     pygame.display.flip()
 
   def endloop(self):
+    "handles end game screen"
+    self.all_sprites.draw(self.screen)
     for s in self.mascots:
-      s.kill()
+      s.kill() 
+    
     accuracy= self.mascots_hit/self.total_shots*100
     pauseFont = pygame.font.Font(None, 50 )
     textOne = pauseFont.render("Game Over!", True, "white")
@@ -159,6 +165,9 @@ class Controller:
         if event.type == pygame.QUIT:
           pygame.quit()
         elif event.type == pygame.KEYDOWN:
+          highscore = open("assets/highscores.txt", "a")
+          highscore.write("User:" + str(self.score))
+          highscore.close()
           if event.key == pygame.K_ESCAPE:
             pygame.quit()
             exit()
