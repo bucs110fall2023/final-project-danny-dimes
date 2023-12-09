@@ -12,20 +12,37 @@ class Mascot(pygame.sprite.Sprite):
         super(Mascot, self).__init__()
 
         # Sprites for the mascot
-        spriteChooser = randint(0,2)
+        spriteChooser = randint(0,6)
         
         self.ualbany = pygame.image.load(f"assets/ualbany.png")
         self.njit = pygame.image.load(f"assets/njit.png")
+        self.umass = pygame.image.load(f"assets/umass.png")
         self.umaine = pygame.image.load(f"assets/umaine.png")
+        self.umbc = pygame.image.load(f"assets/umbc.png")
+        self.unh = pygame.image.load(f"assets/unh.png")
+        self.bryant = pygame.image.load(f"assets/bryant.png")
         if spriteChooser == 0:
             self.image = self.ualbany
             self.image = pygame.transform.scale(self.image, (150,150))
-        if spriteChooser == 1:
+        elif spriteChooser == 1:
             self.image = self.njit
             self.image = pygame.transform.scale(self.image, (150,150))
-        if spriteChooser == 2:
+        elif spriteChooser == 2:
             self.image = self.umaine
             self.image = pygame.transform.scale(self.image, (150,150))
+        elif spriteChooser == 3:
+            self.image = self.umass
+            self.image = pygame.transform.scale(self.image, (150,150))
+        elif spriteChooser == 4:
+            self.image = self.umbc
+            self.image = pygame.transform.scale(self.image, (150,150))
+        elif spriteChooser == 5:
+            self.image = self.unh
+            self.image = pygame.transform.scale(self.image, (150,150))
+        elif spriteChooser == 6:
+            self.image = self.bryant
+            self.image = pygame.transform.scale(self.image, (150,150))
+     
         
         
         self.rect = pygame.Rect(self.image.get_rect().left + 100, self.image.get_rect().top, 100, self.image.get_rect().height+50)

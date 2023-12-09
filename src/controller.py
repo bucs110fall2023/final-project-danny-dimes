@@ -50,6 +50,9 @@ class Controller:
       self.score=0
       self.total_shots=0
       self.mascots_hit=0
+    
+    #end variables
+      
       self.total_mascots = self.num_mascots
 
   def mainloop(self):
@@ -81,14 +84,14 @@ class Controller:
           for s in self.mascots:
             if s.rect.collidepoint(event.pos):
               s.kill()
+              self.total_shots+=1
               self.mascots_hit+=1
               self.score+=100
               self.total_mascots-=1
               self.mascots.add(Mascot())
               self.scoreboardDisplay= self.fontOne.render("Score: " + str(self.score), True, "white")
-
-
-        
+            else:
+              self.total_shots+=1
         elif event.type == pygame.KEYDOWN:
           if event.key == pygame.K_ESCAPE:
             self.state = "END" 
@@ -126,14 +129,46 @@ class Controller:
           self.state = "GAME"  # Resume the game
 
         # Render the pause screen
-    self.screen.fill((255, 255, 255))  # Fill the screen with white
-    font = pygame.font.Font(None, 100 )
-    text = font.render("Paused", True, "black")
+    self.screen.fill((255, 255, 255))
+    pauseFont = pygame.font.Font(None, 100 )
+    text = pauseFont.render("Paused", True, "black")
     text_rect = text.get_rect(center=(self.width // 2, self.height // 2))
     self.screen.blit(text, text_rect)
     pygame.display.flip()
 
   def endloop(self):
-    pygame.quit()
-    exit()
+    for s in self.mascots:
+      s.kill()
+    accuracy= self.mascots_hit/self.total_shots*100
+    pauseFont = pygame.font.Font(None, 50 )
+    textOne = pauseFont.render("Game Over!", True, "white")
+    textOne_rect = textOne.get_rect(center=(self.width // 2, self.height // 3))
+    self.screen.blit(textOne, textOne_rect)
+
+    textTwo = pauseFont.render("You hit a total of " + str(self.mascots_hit) + " mascots of rival schools!", True, "white")
+    textTwo_rect = textTwo.get_rect(center=(self.width // 2, self.height // 2.6))
+    self.screen.blit(textTwo, textTwo_rect)
+
+
+    textThree = pauseFont.render("Your total accuracy was: " + str(accuracy) + "%", True, "white")
+    textThree_rect = textThree.get_rect(center=(self.width // 2, self.height // 2.4))
+    self.screen.blit(textThree, textThree_rect)
+
+    textFour= pauseFont.render("Press Escape to Quit", True, "white")
+    textFour_rect = textFour.get_rect(center=(self.width // 2, self.height // 2.2))
+    self.screen.blit(textFour, textFour_rect)
+    pygame.display.flip()
+    
+    for event in pygame.event.get():
+        if event.type == pygame.QUIT:
+          pygame.quit()
+        elif event.type == pygame.KEYDOWN:
+          if event.key == pygame.K_ESCAPE:
+            pygame.quit()
+            exit()
+
+
+    
+    
+    
 
