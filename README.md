@@ -35,37 +35,34 @@ the ducks will be rival school mascots
 ### Features
 
 1. Total Points 
-2. Total Shots 
+2. Pause 
 3. Clock 
-4. End screen showing ducks hit/accuracy
+4. End screen showing mascots hit/accuracy
 5. Different mascots moving in Different Patterns
 
 ### Classes
 
-mascot class: This represents a mascot in the Duck Hunt game. It handles the mascot's movement, animation, and response to being shot.
+mascot class: This represents a mascot in the Mascot Hunt game. It handles the mascot's movement
+background class: Holds game's background
 
-clock class: This represents the in-game clock used to track the remaining time for the Duck Hunt game. It provides methods to start the clock, update the countdown, and manage the visual representation of the timer.
 
-cursor class: This class represents the cursor used in the Duck Hunt game. It is responsible for tracking the mouse position, detecting mouse clicks, and playing gunshot sounds. The cursor sprite is updated to follow the mouse movements.
-
-game class: This class represents the in-game clock used to track the remaining time for the Duck Hunt game. It provides methods to start the clock, update the countdown, and manage the visual representation of the timer.
 
 ## ATP
-1. Test Case: User Interface
+1. Test Case: Pause
 - Test Description: Verify the functionality and appearance of the user interface elements.
 - Test Steps:
 1.1 Launch the game.
 1.2 Pause game by pressing P
-1.3 Exit game.
-- Expected Outcome: The user interface is intuitive, buttons respond to clicks, and the game starts without errors.
+1.3 Unpause by pressing P again
+- Expected Outcome: The game pauses, showing a white screen and the word "paused" and when pressing P again the game resumes
 
-2. Test Case: Duck Spawning
+2. Test Case: Mascot Spawning
 - Test Description: Ensure mascots spawn correctly and follow patterns.
 - Test Steps:
 2.1 Start a new game.
 2.2 Observe the spawning of mascots.
 2.3 Confirm mascots move in patterns.
-- Expected Outcome: Mascots spawn appropriately and move realistically.
+- Expected Outcome: Mascots spawn appropriately and move
 
 3. Test Case: Shooting Mechanism
 - Test Description: Validate the shooting mechanism and accuracy.
@@ -89,5 +86,5 @@ game class: This class represents the in-game clock used to track the remaining 
 5.1 Start a new game
 5.2 Play game until timer runs out
 - Expected Outcome: The game ends when the timer runs out or the player reaches the target score, displaying text showing that game is over with 
-accuracy/ducks shot shown
+accuracy/mascots hit
 
