@@ -109,7 +109,7 @@ class Controller:
       #redraw models
       self.all_sprites.draw(self.screen)
       #redraw scoreboard
-      self.screen.blit(self.scoreboard_display, (self.width // 1.25, self.height // 1.09) )
+      self.screen.blit(self.scoreboard_display, (self.width // 1.25, self.height // 1.09))
 
       self.mascots.draw(self.screen)  # Draw the mascots on the screen
       self.screen.blit(self.timer_display, (self.width // 2.1, self.height // 1.09))
@@ -138,10 +138,12 @@ class Controller:
   def endloop(self):
     "handles end game screen"
     self.all_sprites.draw(self.screen)
+    self.screen.blit(self.timer_display, (self.width // 2.1, self.height // 1.09))
+    self.screen.blit(self.scoreboard_display, (self.width // 1.25, self.height // 1.09))
     for s in self.mascots:
       s.kill() 
     
-    accuracy= self.mascots_hit/self.total_shots*100
+    accuracy= round(self.mascots_hit/self.total_shots*100, 2)
     pauseFont = pygame.font.Font(None, 50 )
     textOne = pauseFont.render("Game Over!", True, "white")
     textOne_rect = textOne.get_rect(center=(self.width // 2, self.height // 3))
@@ -165,8 +167,9 @@ class Controller:
         if event.type == pygame.QUIT:
           pygame.quit()
         elif event.type == pygame.KEYDOWN:
+          #data permanence
           highscore = open("assets/highscores.txt", "a")
-          highscore.write("User:" + str(self.score))
+          highscore.write("User: " + str(self.score)+"\n")
           highscore.close()
           if event.key == pygame.K_ESCAPE:
             pygame.quit()
