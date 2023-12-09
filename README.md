@@ -43,11 +43,11 @@ background class: Initializes game's background
 
 ## ATP
 1. Test Case: Pause
-- Test Description: Verify the functionality and appearance of the user interface elements.
-- Test Steps:
-1.1 Launch the game.
-1.2 Pause game by pressing P
-1.3 Unpause by pressing P again
+- Test Description: Verify the functionality and appearance of the user interface elements. <br />
+- Test Steps: <br />
+1.1 Launch the game. <br />
+1.2 Pause game by pressing P <br />
+1.3 Unpause by pressing P again <br />
 - Expected Outcome: The game pauses, showing a white screen and the word "paused" and when pressing P again the game resumes
 
 2. Test Case: Mascot Spawning
