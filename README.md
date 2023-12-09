@@ -73,7 +73,7 @@ background class: screen, image, height and width of screen, left and top coordi
 - Test Description: Validate the shooting mechanism and accuracy.
 - Test Steps:<br />
 3.1 Start a new game.<br />
-3.2 Aim at a mascot.<br />
+3.2 Aim at a mascot. <br />
 3.3 Fire a shot.<br />
 - Expected Outcome: Shots accurately hit the targeted mascots, and the shooting mechanism responds appropriately.
 
