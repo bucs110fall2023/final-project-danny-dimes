@@ -51,34 +51,34 @@ background class: Initializes game's background
 - Expected Outcome: The game pauses, showing a white screen and the word "paused" and when pressing P again the game resumes
 
 2. Test Case: Mascot Spawning
-- Test Description: Ensure mascots spawn correctly and follow patterns.
-- Test Steps:
-2.1 Start a new game.
-2.2 Observe the spawning of mascots.
-2.3 Confirm mascots move in patterns.
+- Test Description: Ensure mascots spawn correctly and follow patterns. <br />
+- Test Steps: <br />
+2.1 Start a new game. <br />
+2.2 Observe the spawning of mascots. <br />
+2.3 Confirm mascots move in patterns. <br />
 - Expected Outcome: Mascots spawn appropriately and move
 
-3. Test Case: Shooting Mechanism
+3. Test Case: Shooting Mechanism 
 - Test Description: Validate the shooting mechanism and accuracy.
-- Test Steps:
-3.1 Start a new game.
-3.2 Aim at a mascot.
-3.3 Fire a shot.
+- Test Steps:<br />
+3.1 Start a new game.<br />
+3.2 Aim at a mascot.<br />
+3.3 Fire a shot.<br />
 - Expected Outcome: Shots accurately hit the targeted mascots, and the shooting mechanism responds appropriately.
 
 4. Test Case: Scoring System
-- Test Description: Confirm the scoring system calculates points accurately.
-- Test Steps:
-4.1 Start a new game.
-4.2 Successfully shoot mascots.
-4.3 Miss shots intentionally.
+- Test Description: Confirm the scoring system calculates points accurately. <br />
+- Test Steps: <br />
+4.1 Start a new game. <br />
+4.2 Successfully shoot mascots. <br />
+4.3 Miss shots intentionally. <br />
 - Expected Outcome: Points are assigned correctly for successful shots, and no points are awarded for missed shots.
 
 5. Test Case: Game Over 
-- Test Description: Ensure the game ends appropriately under different scenarios.
-- Test Steps:
-5.1 Start a new game
-5.2 Play game until timer runs out
+- Test Description: Ensure the game ends appropriately under different scenarios. <br />
+- Test Steps: <br />
+5.1 Start a new game <br />
+5.2 Play game until timer runs out <br />
 - Expected Outcome: The game ends when the timer runs out or the player reaches the target score, displaying text showing that game is over with 
 accuracy/mascots hit
 
